@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Codi Ray - Web Developer</title>
-    
+
     <!-- Estilos generales -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -27,15 +27,15 @@
             font-family: 'Orbitron', sans-serif;
             background: var(--bg-color);
             color: var(--text-color);
-            transition: background 0.3s, color 0.3s;
+            transition: background 0.5s, color 0.5s;
             text-align: center;
+            scroll-behavior: smooth;
         }
 
-        /* Contenedor principal */
         .container {
             width: 80%;
             margin: auto;
-            padding-top: 50px;
+            padding: 50px 0;
         }
 
         /* Logo */
@@ -46,8 +46,7 @@
             overflow: hidden;
             display: inline-block;
             margin-bottom: -40px;
-            transition: transform 0.3s ease-in-out;
-            box-shadow: 0 0 15px var(--primary-color);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
         .profile-img img {
@@ -56,33 +55,51 @@
         }
 
         .profile-img:hover {
-            transform: scale(1.1);
+            transform: scale(1.15);
+            box-shadow: 0 0 25px var(--primary-color);
         }
 
-        /* Botón de tema */
-        .theme-toggle {
-            position: fixed;
-            top: 10px;
-            right: 60px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            background: var(--primary-color);
-            color: white;
-            padding: 10px;
-            border-radius: 50%;
-        }
-
-        /* Botón de idioma */
+        /* Botones */
+        .theme-toggle,
         .language-toggle {
             position: fixed;
             top: 10px;
-            right: 20px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.2rem;
             background: var(--primary-color);
             color: white;
-            padding: 8px;
+            padding: 10px;
             border-radius: 5px;
+        }
+
+        .theme-toggle { right: 60px; }
+        .language-toggle { right: 20px; }
+
+        /* Tarjetas para las secciones */
+        .section-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Animación de entrada para las secciones */
+        .section-card {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section-card.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Animación de tecnologías */
@@ -108,13 +125,12 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* Sección de Tecnologías con efecto en bordes */
+        /* Tecnologías con efecto hover */
         .tech-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
-            margin-top: 30px;
         }
 
         .tech-item {
@@ -122,7 +138,7 @@
             height: 100px;
             border: 2px solid transparent;
             border-radius: 10px;
-            transition: border 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, border 0.3s ease-in-out;
         }
 
         .tech-item img {
@@ -133,16 +149,24 @@
 
         .tech-item:hover {
             border-color: var(--primary-color);
+            transform: scale(1.1);
         }
 
         /* Títulos */
         h1 {
             font-size: 2.5rem;
-            font-weight: 700;
             color: var(--primary-color);
         }
+
         h2 {
-            font-size: 1.8rem;
+            font-size: 2rem;
+        }
+
+        footer {
+            margin-top: 30px;
+            padding: 15px 0;
+            background: var(--primary-color);
+            color: #121212;
         }
     </style>
 </head>
@@ -162,42 +186,14 @@
         <div class="profile-img">
             <img src="image.png" alt="Codi Ray Logo">
         </div>
-        <p id="description">Desarrollador web con más de 3 años de experiencia creando soluciones digitales innovadoras.</p>
     </header>
 
-    <div class="tech-container">
-        <div class="tech-list">HTML | CSS | JavaScript | PHP | Laravel | MySQL | Tailwind | WordPress | React | Vue.js</div>
-    </div>
-
-    <section class="container">
-        <h2 id="about-title">Sobre Mí</h2>
-        <p id="about-description">Soy Codi Ray, un desarrollador web con más de 3 años de experiencia. Transformo diseños en interfaces funcionales y eficientes centradas en la experiencia del usuario.</p>
+    <section class="container section-card">
+        <h2>Sobre Mí</h2>
+        <p>Soy Codi Ray, un desarrollador web con más de 3 años de experiencia. Transformo diseños en interfaces funcionales y eficientes centradas en la experiencia del usuario.</p>
     </section>
 
-    <section class="container">
-        <h2 id="projects-title">Proyectos Recientes</h2>
-        <div>
-            <h3>Diseño Web - Eswap</h3>
-            <p id="project1">Desarrollo de una tienda de moda online basada en Eswap UI usando Laravel.</p>
-            <a href="#">Ver demo ⮕</a>
-
-            <h3>Web App - Only Immorals</h3>
-            <p id="project2">Plataforma similar a OnlyFans, diseñada y desarrollada desde cero.</p>
-            <a href="#">Ver demo ⮕</a>
-        </div>
-    </section>
-
-    <section class="container">
-        <h2 id="services-title">Servicios</h2>
-        <ul>
-            <li>✔ Desarrollo Web (Front-End, Back-End, Responsive)</li>
-            <li>✔ Desarrollo de APIs (RESTful, GraphQL)</li>
-            <li>✔ E-Commerce (Shopify, WooCommerce, Magento)</li>
-        </ul>
-    </section>
-
-    <!-- Nueva Sección de Tecnologías -->
-    <section class="container">
+    <section class="container section-card">
         <h2>Tecnologías</h2>
         <div class="tech-grid">
             <div class="tech-item"><img src="html.png" alt="HTML"></div>
@@ -209,19 +205,13 @@
         </div>
     </section>
 
-    <section class="container">
-        <h2 id="contact-title">Contacto</h2>
-        <p id="contact-text">Estoy disponible para proyectos freelance. Contáctame en:</p>
-        <p>📞 WhatsApp: +57 3017182357</p>
-        <p>📩 Email: contacto@codiray.dev</p>
-    </section>
-
     <footer>
         <p>&copy; 2025 Codi Ray. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Scripts -->
     <script>
+        // Cambiar tema
         function toggleTheme() {
             let body = document.body;
             let icon = document.querySelector(".theme-toggle i");
@@ -230,12 +220,24 @@
             icon.classList.replace(isDark ? "fa-sun" : "fa-moon", isDark ? "fa-moon" : "fa-sun");
         }
 
+        // Cambiar idioma
         function toggleLanguage() {
             let langButton = document.querySelector(".language-toggle");
             let lang = document.documentElement.lang === "en" ? "es" : "en";
             document.documentElement.lang = lang;
             langButton.innerHTML = lang === "es" ? "🌐 Español" : "🌐 English";
         }
+
+        // Animación en secciones al desplazarse
+        const sections = document.querySelectorAll('.section-card');
+        window.addEventListener('scroll', () => {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < window.innerHeight - 100) {
+                    section.classList.add('show');
+                }
+            });
+        });
     </script>
 
 </body>
