@@ -10,7 +10,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-        /* Variables de color */
         :root {
             --bg-color: #121212;
             --text-color: #ffffff;
@@ -19,10 +18,8 @@
         [data-theme="light"] {
             --bg-color: #ffffff;
             --text-color: #222;
-            --primary-color: #c9a227;
         }
 
-        /* Estilos generales */
         body {
             font-family: 'Orbitron', sans-serif;
             background: var(--bg-color);
@@ -38,7 +35,6 @@
             padding: 50px 0;
         }
 
-        /* Logo */
         .profile-img {
             width: 150px;
             height: 150px;
@@ -59,9 +55,7 @@
             box-shadow: 0 0 25px var(--primary-color);
         }
 
-        /* Botones */
-        .theme-toggle,
-        .language-toggle {
+        .theme-toggle, .language-toggle {
             position: fixed;
             top: 10px;
             cursor: pointer;
@@ -75,7 +69,6 @@
         .theme-toggle { right: 60px; }
         .language-toggle { right: 20px; }
 
-        /* Tarjetas para las secciones */
         .section-card {
             background: rgba(255, 255, 255, 0.05);
             border: 2px solid var(--primary-color);
@@ -83,18 +76,9 @@
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .section-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Animación de entrada para las secciones */
-        .section-card {
+            transition: transform 0.3s ease-in-out, opacity 0.6s ease-out;
             opacity: 0;
             transform: translateY(50px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
         .section-card.show {
@@ -102,30 +86,6 @@
             transform: translateY(0);
         }
 
-        /* Animación de tecnologías */
-        .tech-container {
-            overflow: hidden;
-            white-space: nowrap;
-            margin: 20px 0;
-            background: #000;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .tech-list {
-            display: inline-block;
-            font-family: 'Orbitron', sans-serif;
-            color: var(--primary-color);
-            font-size: 14px;
-            animation: scrollTech 10s linear infinite;
-        }
-
-        @keyframes scrollTech {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* Tecnologías con efecto hover */
         .tech-grid {
             display: flex;
             flex-wrap: wrap;
@@ -152,7 +112,6 @@
             transform: scale(1.1);
         }
 
-        /* Títulos */
         h1 {
             font-size: 2.5rem;
             color: var(--primary-color);
@@ -172,7 +131,6 @@
 </head>
 <body data-theme="dark">
 
-    <!-- Botones -->
     <div class="theme-toggle" onclick="toggleTheme()">
         <i class="fas fa-sun"></i>
     </div>
@@ -180,7 +138,6 @@
         🌐 Español
     </div>
 
-    <!-- Contenido -->
     <header class="container">
         <h1 id="title">¡Hey! 👋, Soy Codi Ray</h1>
         <div class="profile-img">
@@ -189,12 +146,14 @@
     </header>
 
     <section class="container section-card">
-        <h2>Sobre Mí</h2>
-        <p>Soy Codi Ray, un desarrollador web con más de 3 años de experiencia. Transformo diseños en interfaces funcionales y eficientes centradas en la experiencia del usuario.</p>
+        <h2 id="about-title">Sobre Mí</h2>
+        <p id="about-text">
+            Soy Codi Ray, un desarrollador web con más de 3 años de experiencia. Transformo diseños en interfaces funcionales y eficientes centradas en la experiencia del usuario.
+        </p>
     </section>
 
     <section class="container section-card">
-        <h2>Tecnologías</h2>
+        <h2 id="tech-title">Tecnologías</h2>
         <div class="tech-grid">
             <div class="tech-item"><img src="html.png" alt="HTML"></div>
             <div class="tech-item"><img src="css.png" alt="CSS"></div>
@@ -209,7 +168,6 @@
         <p>&copy; 2025 Codi Ray. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Scripts -->
     <script>
         // Cambiar tema
         function toggleTheme() {
@@ -223,12 +181,26 @@
         // Cambiar idioma
         function toggleLanguage() {
             let langButton = document.querySelector(".language-toggle");
-            let lang = document.documentElement.lang === "en" ? "es" : "en";
-            document.documentElement.lang = lang;
-            langButton.innerHTML = lang === "es" ? "🌐 Español" : "🌐 English";
+            let currentLang = document.documentElement.lang;
+
+            if (currentLang === "es") {
+                document.documentElement.lang = "en";
+                langButton.innerHTML = "🌐 English";
+                document.getElementById("title").innerText = "Hey! 👋 I'm Codi Ray";
+                document.getElementById("about-title").innerText = "About Me";
+                document.getElementById("about-text").innerText = "I'm Codi Ray, a web developer with over 3 years of experience. I transform designs into functional and efficient user-centered interfaces.";
+                document.getElementById("tech-title").innerText = "Technologies";
+            } else {
+                document.documentElement.lang = "es";
+                langButton.innerHTML = "🌐 Español";
+                document.getElementById("title").innerText = "¡Hey! 👋, Soy Codi Ray";
+                document.getElementById("about-title").innerText = "Sobre Mí";
+                document.getElementById("about-text").innerText = "Soy Codi Ray, un desarrollador web con más de 3 años de experiencia. Transformo diseños en interfaces funcionales y eficientes centradas en la experiencia del usuario.";
+                document.getElementById("tech-title").innerText = "Tecnologías";
+            }
         }
 
-        // Animación en secciones al desplazarse
+        // Mostrar secciones con animación al desplazarse
         const sections = document.querySelectorAll('.section-card');
         window.addEventListener('scroll', () => {
             sections.forEach(section => {
