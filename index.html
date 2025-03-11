@@ -1,28 +1,72 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoja de Vida | Resume</title>
+    <title>Codi Ray | Web Developer</title>
     <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="container">
-        <button onclick="toggleLanguage()">Español / English</button>
-        <h1 id="name">Juan Pérez</h1>
-        <p id="job">Desarrollador Web | Web Developer</p>
-        <section>
-            <h2 id="about-title">Sobre mí | About Me</h2>
-            <p id="about-text">Soy un desarrollador web con experiencia en tecnologías modernas. | I am a web developer with experience in modern technologies.</p>
-        </section>
-        <section>
-            <h2 id="experience-title">Experiencia | Experience</h2>
+    <header>
+        <nav>
+            <h1>Codi Ray</h1>
             <ul>
-                <li id="job1">Desarrollador en TechCorp | Developer at TechCorp</li>
-                <li id="job2">Freelancer en proyectos web | Freelancer on web projects</li>
+                <li><a href="#home">Index</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </section>
-    </div>
-    <script src="script.js"></script>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>Hey! 👋</h2>
+        <p>I am Codi Ray, a web developer with 3+ years of experience creating efficient and innovative digital solutions.</p>
+        <a href="#projects" class="btn">See Projects</a>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I specialize in transforming designs into functional, efficient interfaces focused on user experience.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Recent Work</h2>
+        <div class="project">
+            <h3>Web Design - Eswap</h3>
+            <p>Developing an online fashion store using Laravel.</p>
+            <a href="#" class="btn">See Demo ↗</a>
+        </div>
+        <div class="project">
+            <h3>Web App - Only Immorals</h3>
+            <p>A web app similar to OnlyFans, designed and developed from scratch.</p>
+            <a href="#" class="btn">See Demo ↗</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2>Services I Offer</h2>
+        <ul>
+            <li>🔹 Web Development (Front-End, Back-End, Responsive)</li>
+            <li>🔹 API Development (RESTful APIs, GraphQL APIs)</li>
+            <li>🔹 E-Commerce Apps (Shopify, WooCommerce, Magento)</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Let’s Talk</h2>
+        <p>I am available for freelance work. Connect with me via:</p>
+        <ul>
+            <li>📱 WhatsApp: +57 3017182357</li>
+            <li>✈️ Telegram: @codiray</li>
+            <li>📧 Email: contacto@codiray.dev</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>©2025 Codi Ray, All Rights Reserved</p>
+    </footer>
 </body>
 </html>
