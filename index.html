@@ -10,6 +10,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
+        /* Variables de color */
         :root {
             --bg-color: #121212;
             --text-color: #ffffff;
@@ -21,6 +22,7 @@
             --primary-color: #c9a227;
         }
 
+        /* Estilos generales */
         body {
             font-family: 'Orbitron', sans-serif;
             background: var(--bg-color);
@@ -29,76 +31,212 @@
             text-align: center;
         }
 
+        /* Contenedor principal */
         .container {
             width: 80%;
             margin: auto;
             padding-top: 50px;
         }
 
+        /* Logo */
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: inline-block;
+            margin-bottom: -40px;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: auto;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Botón de tema */
+        .theme-toggle {
+            position: fixed;
+            top: 10px;
+            right: 60px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        /* Botón de idioma */
+        .language-toggle {
+            position: fixed;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        /* Animación de tecnologías */
+        .tech-container {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 20px 0;
+            background: #000;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .tech-list {
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-color);
+            font-size: 14px;
+            animation: scrollTech 10s linear infinite;
+        }
+
+        @keyframes scrollTech {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Sección de Tecnologías con efecto en bordes */
         .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 20px;
-            padding: 20px 0;
+            justify-content: center;
+            margin-top: 30px;
         }
 
         .tech-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #1a1a1a;
-            padding: 15px;
-            border-radius: 8px;
-            transition: transform 0.3s, background-color 0.3s;
+            width: 100px;
+            height: 100px;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            transition: border 0.3s ease-in-out;
         }
 
         .tech-item img {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 10px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
         }
 
         .tech-item:hover {
-            transform: scale(1.1);
-            background-color: var(--primary-color);
-            color: #000;
+            border-color: var(--primary-color);
         }
 
-        h1, h2 {
+        /* Títulos */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
             color: var(--primary-color);
         }
-
-        footer {
-            margin-top: 40px;
+        h2 {
+            font-size: 1.8rem;
         }
     </style>
 </head>
 <body data-theme="dark">
 
+    <!-- Botones -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-sun"></i>
+    </div>
+    <div class="language-toggle" onclick="toggleLanguage()">
+        🌐 Español
+    </div>
+
+    <!-- Contenido -->
     <header class="container">
-        <h1>Hey! 👋, I'm Codi Ray</h1>
-        <p>Web developer with 3+ years of experience creating innovative digital solutions.</p>
+        <h1 id="title">¡Hey! 👋, Soy Codi Ray</h1>
+        <div class="profile-img">
+            <img src="image.png" alt="Codi Ray Logo">
+        </div>
+        <p id="description">Desarrollador web con más de 3 años de experiencia creando soluciones digitales innovadoras.</p>
     </header>
 
+    <div class="tech-container">
+        <div class="tech-list">HTML | CSS | JavaScript | PHP | Laravel | MySQL | Tailwind | WordPress | React | Vue.js</div>
+    </div>
+
     <section class="container">
-        <h2>Technologies I Use</h2>
-        <div class="tech-grid">
-            <div class="tech-item"><img src="html.png" alt="HTML">HTML</div>
-            <div class="tech-item"><img src="css.png" alt="CSS">CSS</div>
-            <div class="tech-item"><img src="javascript.png" alt="JavaScript">JavaScript</div>
-            <div class="tech-item"><img src="php.png" alt="PHP">PHP</div>
-            <div class="tech-item"><img src="laravel.png" alt="Laravel">Laravel</div>
-            <div class="tech-item"><img src="mysql.png" alt="MySQL">MySQL</div>
-            <div class="tech-item"><img src="tailwind.png" alt="Tailwind">Tailwind</div>
-            <div class="tech-item"><img src="wordpress.png" alt="WordPress">WordPress</div>
-            <div class="tech-item"><img src="react.png" alt="React">React</div>
-            <div class="tech-item"><img src="vue.png" alt="Vue.js">Vue.js</div>
+        <h2 id="about-title">Sobre Mí</h2>
+        <p id="about-description">Soy Codi Ray, un desarrollador web con más de 3 años de experiencia. Transformo diseños en interfaces funcionales y eficientes centradas en la experiencia del usuario.</p>
+    </section>
+
+    <section class="container">
+        <h2 id="projects-title">Proyectos Recientes</h2>
+        <div>
+            <h3>Diseño Web - Eswap</h3>
+            <p id="project1">Desarrollo de una tienda de moda online basada en Eswap UI usando Laravel.</p>
+            <a href="#">Ver demo ⮕</a>
+
+            <h3>Web App - Only Immorals</h3>
+            <p id="project2">Plataforma similar a OnlyFans, diseñada y desarrollada desde cero.</p>
+            <a href="#">Ver demo ⮕</a>
         </div>
     </section>
 
+    <section class="container">
+        <h2 id="services-title">Servicios</h2>
+        <ul>
+            <li>✔ Desarrollo Web (Front-End, Back-End, Responsive)</li>
+            <li>✔ Desarrollo de APIs (RESTful, GraphQL)</li>
+            <li>✔ E-Commerce (Shopify, WooCommerce, Magento)</li>
+        </ul>
+    </section>
+
+    <!-- Nueva Sección de Tecnologías -->
+    <section class="container">
+        <h2>Tecnologías</h2>
+        <div class="tech-grid">
+            <div class="tech-item"><img src="html.png" alt="HTML"></div>
+            <div class="tech-item"><img src="css.png" alt="CSS"></div>
+            <div class="tech-item"><img src="js.png" alt="JavaScript"></div>
+            <div class="tech-item"><img src="php.png" alt="PHP"></div>
+            <div class="tech-item"><img src="laravel.png" alt="Laravel"></div>
+            <div class="tech-item"><img src="mysql.png" alt="MySQL"></div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 id="contact-title">Contacto</h2>
+        <p id="contact-text">Estoy disponible para proyectos freelance. Contáctame en:</p>
+        <p>📞 WhatsApp: +57 3017182357</p>
+        <p>📩 Email: contacto@codiray.dev</p>
+    </section>
+
     <footer>
-        <p>&copy; 2025 Codi Ray. All rights reserved.</p>
+        <p>&copy; 2025 Codi Ray. Todos los derechos reservados.</p>
     </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleTheme() {
+            let body = document.body;
+            let icon = document.querySelector(".theme-toggle i");
+            let isDark = body.getAttribute("data-theme") === "dark";
+            body.setAttribute("data-theme", isDark ? "light" : "dark");
+            icon.classList.replace(isDark ? "fa-sun" : "fa-moon", isDark ? "fa-moon" : "fa-sun");
+        }
+
+        function toggleLanguage() {
+            let langButton = document.querySelector(".language-toggle");
+            let lang = document.documentElement.lang === "en" ? "es" : "en";
+            document.documentElement.lang = lang;
+            langButton.innerHTML = lang === "es" ? "🌐 Español" : "🌐 English";
+        }
+    </script>
 
 </body>
 </html>
