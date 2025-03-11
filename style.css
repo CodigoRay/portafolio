@@ -1,59 +1,40 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #0d1117;
-    color: #c9d1d9;
+    background-color: #121212;
+    color: white;
     text-align: center;
 }
 
-header {
-    background-color: #161b22;
-    padding: 1rem;
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 50px 0;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 10px;
+.hero {
+    padding: 50px 0;
 }
 
-nav ul li a {
-    color: #58a6ff;
-    text-decoration: none;
+.hero p {
+    font-size: 1.5rem;
 }
 
-section {
-    padding: 40px;
-}
-
-.project {
-    background-color: #161b22;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 8px;
+.projects, .services, .contact {
+    margin-top: 50px;
 }
 
 .btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #238636;
+    background-color: #ff6600;
     color: white;
-    text-decoration: none;
+    padding: 10px 20px;
     border-radius: 5px;
-}
-
-.btn:hover {
-    background-color: #2ea043;
-}
-
-footer {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #161b22;
+    text-decoration: none;
+    font-size: 1.2rem;
 }
