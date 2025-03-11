@@ -4,35 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Codi Ray - Web Developer</title>
+    
+    <!-- Política de Seguridad CSP -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self'; 
+        style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; 
+        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; 
+        script-src 'self'; 
+        img-src 'self' data:;
+    ">
 
     <!-- Estilos generales -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-        :root {
-            --bg-color: #121212;
-            --text-color: #ffffff;
-            --primary-color: #c9a227;
-        }
-        [data-theme="light"] {
-            --bg-color: #ffffff;
-            --text-color: #222;
-        }
-
+        /* Estilos generales */
         body {
             font-family: 'Orbitron', sans-serif;
-            background: var(--bg-color);
-            color: var(--text-color);
-            transition: background 0.5s, color 0.5s;
+            background: #121212;
+            color: #ffffff;
             text-align: center;
-            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
             width: 80%;
             margin: auto;
-            padding: 50px 0;
+            padding-top: 50px;
         }
 
         .profile-img {
@@ -42,7 +42,8 @@
             overflow: hidden;
             display: inline-block;
             margin-bottom: -40px;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 0 15px #c9a227;
         }
 
         .profile-img img {
@@ -51,166 +52,130 @@
         }
 
         .profile-img:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 25px var(--primary-color);
+            transform: scale(1.1);
         }
 
-        .theme-toggle, .language-toggle {
+        .language-toggle {
             position: fixed;
             top: 10px;
+            right: 20px;
             cursor: pointer;
-            font-size: 1.2rem;
-            background: var(--primary-color);
+            font-size: 1rem;
+            background: #c9a227;
             color: white;
-            padding: 10px;
+            padding: 8px;
             border-radius: 5px;
         }
 
-        .theme-toggle { right: 60px; }
-        .language-toggle { right: 20px; }
-
-        .section-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid var(--primary-color);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-            transition: transform 0.3s ease-in-out, opacity 0.6s ease-out;
-            opacity: 0;
-            transform: translateY(50px);
+        .tech-container {
+            background: #000;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
         }
 
-        .section-card.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .tech-grid {
+        .tech-list {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
             justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            color: #c9a227;
         }
 
         .tech-item {
-            width: 100px;
-            height: 100px;
-            border: 2px solid transparent;
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out, border 0.3s ease-in-out;
-        }
-
-        .tech-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .tech-item:hover {
-            border-color: var(--primary-color);
-            transform: scale(1.1);
+            background: #1e1e1e;
+            padding: 8px 15px;
+            border-radius: 5px;
         }
 
         h1 {
             font-size: 2.5rem;
-            color: var(--primary-color);
+            font-weight: 700;
+            color: #c9a227;
         }
 
         h2 {
-            font-size: 2rem;
-        }
-
-        footer {
-            margin-top: 30px;
-            padding: 15px 0;
-            background: var(--primary-color);
-            color: #121212;
+            font-size: 1.8rem;
         }
     </style>
 </head>
-<body data-theme="dark">
+<body>
 
-    <div class="theme-toggle" onclick="toggleTheme()">
-        <i class="fas fa-sun"></i>
-    </div>
+    <!-- Botón de idioma -->
     <div class="language-toggle" onclick="toggleLanguage()">
         🌐 Español
     </div>
 
+    <!-- Contenido principal -->
     <header class="container">
-        <h1 id="title">¡Hey! 👋, Soy Codi Ray</h1>
+        <h1 id="title">Hey! 👋, I'm Codi Ray</h1>
         <div class="profile-img">
             <img src="image.png" alt="Codi Ray Logo">
         </div>
+        <p id="description">Web developer with 3+ years of experience creating innovative digital solutions.</p>
     </header>
 
-    <section class="container section-card">
-        <h2 id="about-title">Sobre Mí</h2>
-        <p id="about-text">
-            Soy Codi Ray, un desarrollador web con más de 3 años de experiencia. Transformo diseños en interfaces funcionales y eficientes centradas en la experiencia del usuario.
-        </p>
+    <!-- Sección de Tecnologías -->
+    <div class="tech-container">
+        <h2 id="tech-title">Technologies I Work With</h2>
+        <div class="tech-list">
+            <div class="tech-item">HTML</div>
+            <div class="tech-item">CSS</div>
+            <div class="tech-item">JavaScript</div>
+            <div class="tech-item">PHP</div>
+            <div class="tech-item">Laravel</div>
+            <div class="tech-item">MySQL</div>
+            <div class="tech-item">Tailwind</div>
+            <div class="tech-item">WordPress</div>
+            <div class="tech-item">React</div>
+            <div class="tech-item">Vue.js</div>
+        </div>
+    </div>
+
+    <!-- Sección 'Acerca de mí' -->
+    <section class="container">
+        <h2 id="about-title">About Me</h2>
+        <p id="about-description">I'm Codi Ray, a web developer with over 3 years of experience. I transform designs into functional, efficient interfaces focused on the user experience.</p>
     </section>
 
-    <section class="container section-card">
-        <h2 id="tech-title">Tecnologías</h2>
-        <div class="tech-grid">
-            <div class="tech-item"><img src="html.png" alt="HTML"></div>
-            <div class="tech-item"><img src="css.png" alt="CSS"></div>
-            <div class="tech-item"><img src="js.png" alt="JavaScript"></div>
-            <div class="tech-item"><img src="php.png" alt="PHP"></div>
-            <div class="tech-item"><img src="laravel.png" alt="Laravel"></div>
-            <div class="tech-item"><img src="mysql.png" alt="MySQL"></div>
+    <!-- Sección de Proyectos -->
+    <section class="container">
+        <h2 id="projects-title">Recent Projects</h2>
+        <div>
+            <h3>Web Design - Eswap</h3>
+            <p id="project1">Development of an online fashion store based on Eswap UI using Laravel.</p>
+            <a href="#">See demo ⮕</a>
+
+            <h3>Web App - Only Immorals</h3>
+            <p id="project2">Platform similar to OnlyFans, designed and developed from scratch.</p>
+            <a href="#">See demo ⮕</a>
         </div>
     </section>
 
+    <!-- Sección de Servicios -->
+    <section class="container">
+        <h2 id="services-title">Services</h2>
+        <ul>
+            <li>✔ Web Development (Front-End, Back-End, Responsive)</li>
+            <li>✔ API Development (RESTful, GraphQL)</li>
+            <li>✔ E-Commerce (Shopify, WooCommerce, Magento)</li>
+        </ul>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section class="container">
+        <h2 id="contact-title">Contact</h2>
+        <p id="contact-text">I'm available for freelance projects. Contact me at:</p>
+        <p>📞 WhatsApp: +57 3017182357</p>
+        <p>📩 Email: contacto@codiray.dev</p>
+    </section>
+
     <footer>
-        <p>&copy; 2025 Codi Ray. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Codi Ray. All rights reserved.</p>
     </footer>
 
-    <script>
-        // Cambiar tema
-        function toggleTheme() {
-            let body = document.body;
-            let icon = document.querySelector(".theme-toggle i");
-            let isDark = body.getAttribute("data-theme") === "dark";
-            body.setAttribute("data-theme", isDark ? "light" : "dark");
-            icon.classList.replace(isDark ? "fa-sun" : "fa-moon", isDark ? "fa-moon" : "fa-sun");
-        }
-
-        // Cambiar idioma
-        function toggleLanguage() {
-            let langButton = document.querySelector(".language-toggle");
-            let currentLang = document.documentElement.lang;
-
-            if (currentLang === "es") {
-                document.documentElement.lang = "en";
-                langButton.innerHTML = "🌐 English";
-                document.getElementById("title").innerText = "Hey! 👋 I'm Codi Ray";
-                document.getElementById("about-title").innerText = "About Me";
-                document.getElementById("about-text").innerText = "I'm Codi Ray, a web developer with over 3 years of experience. I transform designs into functional and efficient user-centered interfaces.";
-                document.getElementById("tech-title").innerText = "Technologies";
-            } else {
-                document.documentElement.lang = "es";
-                langButton.innerHTML = "🌐 Español";
-                document.getElementById("title").innerText = "¡Hey! 👋, Soy Codi Ray";
-                document.getElementById("about-title").innerText = "Sobre Mí";
-                document.getElementById("about-text").innerText = "Soy Codi Ray, un desarrollador web con más de 3 años de experiencia. Transformo diseños en interfaces funcionales y eficientes centradas en la experiencia del usuario.";
-                document.getElementById("tech-title").innerText = "Tecnologías";
-            }
-        }
-
-        // Mostrar secciones con animación al desplazarse
-        const sections = document.querySelectorAll('.section-card');
-        window.addEventListener('scroll', () => {
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                if (sectionTop < window.innerHeight - 100) {
-                    section.classList.add('show');
-                }
-            });
-        });
-    </script>
+    <!-- Scripts Externos -->
+    <script src="scripts.js"></script>
 
 </body>
 </html>
