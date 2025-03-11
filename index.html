@@ -3,53 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codi Ray | Web Developer</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Codi Ray - Desarrollador Web</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <section class="hero">
-            <h1>Hey!, Soy Codi Ray 👋</h1>
-            <p>Soy un desarrollador web con más de 3 años de experiencia creando soluciones digitales eficientes e innovadoras.</p>
-            <a href="#projects" class="btn">Ver Proyectos</a>
-        </section>
-        
-        <section class="about">
-            <h2>Sobre Mí</h2>
-            <p>Me especializo en transformar diseños en interfaces funcionales, eficientes y enfocadas en la experiencia del usuario.</p>
-        </section>
-
-        <section class="projects" id="projects">
-            <h2>Trabajos Recientes</h2>
-            <p>Estoy completamente dedicado a crear soluciones digitales auténticas.</p>
-            <div>
-                <h3>Web Design - Eswap</h3>
-                <p>Desarrollo de una tienda de moda en línea con Laravel.</p>
-                <a href="#" class="btn">Ver Demo</a>
-            </div>
-            <div>
-                <h3>Web App - Only Immorals</h3>
-                <p>Una plataforma similar a OnlyFans creada desde cero.</p>
-                <a href="#" class="btn">Ver Demo</a>
-            </div>
-        </section>
-
-        <section class="services">
-            <h2>Servicios</h2>
+    <header>
+        <h1 class="logo">Codi Ray</h1>
+        <nav>
             <ul>
-                <li>Desarrollo Web (Front-End, Back-End, Responsive)</li>
-                <li>Desarrollo de APIs (RESTful, GraphQL)</li>
-                <li>Aplicaciones E-Commerce (Shopify, WooCommerce, Magento)</li>
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#contact">Contacto</a></li>
             </ul>
-        </section>
+        </nav>
+        <button id="theme-toggle">🌙</button>
+    </header>
 
-        <section class="contact">
-            <h2>Contáctame</h2>
-            <p>Disponible para trabajos freelance. Conéctate conmigo vía:</p>
-            <p>📱 WhatsApp: +57 3017182357</p>
-            <p>✉️ Email: contacto@codiray.dev</p>
-        </section>
-    </div>
+    <section class="hero">
+        <h2>Hey! 👋, Soy Codi Ray</h2>
+        <p>Desarrollador web con más de 3 años de experiencia creando soluciones digitales innovadoras.</p>
+        <a href="#projects" class="btn">Ver proyectos</a>
+    </section>
+
+    <section id="technologies">
+        <div class="tech-slider">
+            <span>HTML</span> <span>CSS</span> <span>JavaScript</span> 
+            <span>PHP</span> <span>Laravel</span> <span>MySQL</span> 
+            <span>React</span> <span>Tailwind</span> <span>WordPress</span>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>Sobre Mí</h2>
+        <p>Soy Codi Ray, programador web con más de 3 años de experiencia. Transformo diseños en interfaces funcionales y eficientes enfocadas en la experiencia del usuario.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Proyectos Recientes</h2>
+        <div class="project">
+            <h3>Web Design - Eswap</h3>
+            <p>Desarrollo de una tienda de moda online basada en Eswap UI usando Laravel.</p>
+            <a href="#">Ver demo ↗</a>
+        </div>
+        <div class="project">
+            <h3>Web App - Only Immorals</h3>
+            <p>Plataforma similar a OnlyFans, diseñada y desarrollada desde cero.</p>
+            <a href="#">Ver demo ↗</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2>Servicios</h2>
+        <ul>
+            <li>✔ Desarrollo Web (Front-End, Back-End, Responsive)</li>
+            <li>✔ Desarrollo de APIs (RESTful, GraphQL)</li>
+            <li>✔ E-Commerce (Shopify, WooCommerce, Magento)</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contáctame</h2>
+        <p>Estoy disponible para proyectos freelance. Conéctate conmigo:</p>
+        <ul>
+            <li>📱 WhatsApp: +57 3017182357</li>
+            <li>✈ Telegram: @codiray</li>
+            <li>📧 Email: contacto@codiray.dev</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>©2025 Codi Ray, Todos los derechos reservados.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
