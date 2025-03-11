@@ -1,3 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("Portfolio Loaded Successfully 🚀");
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Página Codi Ray cargada correctamente.");
 });
