@@ -296,7 +296,11 @@
         <p class="glow-text">Web developer with 3+ years of experience creating innovative digital solutions.</p>
     </div>
 
-   <div class="section content-box">
+<div class="section content-box">
+    <!-- Texto fijo arriba -->
+    <h2 class="fixed-text">I am fully dedicated to creating authentic digital solutions. I want to help make your dreams come true</h2>
+    
+    <!-- Texto que cambia -->
     <h2 class="fade-text">Lo que no te mata, te hace más fuerte – Friedrich Nietzsche</h2>
 </div>
 
@@ -346,9 +350,26 @@
 </script>
 
 <style>
+    /* Estilo para el texto fijo en la parte superior */
+    .fixed-text {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        z-index: 10;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Estilo para el texto que cambia */
     .fade-text {
         opacity: 1;
         transition: opacity 1s ease-in-out;
+        margin-top: 100px; /* Para que no quede debajo del texto fijo */
     }
 
     .fade-in {
@@ -359,6 +380,7 @@
         opacity: 0;
     }
 </style>
+
 
 
     <div class="section content-box">
