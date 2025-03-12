@@ -336,15 +336,13 @@
 <body>
 
     
- 
+     
     <!-- Contenedor del widget con el texto "Cambiar idioma" -->
-    <div>
-        <button class="google-translate-btn" onclick="showTranslate()">Change Language</button>
+    <div id="google_translate_element">
+        <button class="google-translate-btn" onclick="googleTranslateElementInit()">Change Language</button>
     </div>
 
     <!-- Google Translate Widget -->
-    <div id="google_translate_element"></div>
-
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
@@ -354,14 +352,9 @@
                 autoDisplay: false
             }, 'google_translate_element');
         }
-
-        function showTranslate() {
-            var element = document.getElementById('google_translate_element');
-            element.style.display = 'block'; // Mostrar el widget de Google Translate
-        }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+</body>
 <!-- aca comienza la parte fij a -->
 
 
