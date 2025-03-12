@@ -60,11 +60,14 @@
         }
 
         @keyframes electric-effect {
-            from {
-                box-shadow: 0 0 25px 10px #c9a227, 0 0 40px 20px #f5e042;
+            0% {
+                filter: drop-shadow(0 0 5px #f5e042) drop-shadow(0 0 10px #f5e042);
             }
-            to {
-                box-shadow: 0 0 35px 15px #c9a227, 0 0 50px 25px #f5e042;
+            50% {
+                filter: drop-shadow(0 0 15px #f5e042) drop-shadow(0 0 30px #f5e042);
+            }
+            100% {
+                filter: drop-shadow(0 0 5px #f5e042) drop-shadow(0 0 10px #f5e042);
             }
         }
 
@@ -110,10 +113,10 @@
 
         function drawBolts() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.strokeStyle = '#c9a227';
+            ctx.strokeStyle = '#f5e042';
             ctx.lineWidth = 2;
             ctx.shadowBlur = 15;
-            ctx.shadowColor = '#c9a227';
+            ctx.shadowColor = '#f5e042';
 
             lightningBolts.forEach(bolt => {
                 bolt.y += bolt.speed;
