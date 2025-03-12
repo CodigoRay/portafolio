@@ -35,25 +35,22 @@
             font-size: 1.5rem;
         }
 
-        .profile-img {
+        .highlight {
+            background-color: #c9a227;
+            color: #000;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
             position: relative;
             display: inline-block;
+            transition: transform 0.3s ease;
         }
 
-        .profile-img img {
-            width: 150px;
-            border-radius: 50%;
-            margin-top: 1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid #c9a227;
-        }
-
-        .profile-img img:hover {
-            transform: scale(1.2);
+        .highlight:hover {
+            transform: scale(1.1);
             box-shadow: 0 0 15px 5px #c9a227, 0 0 30px 15px #f5e042;
         }
 
-        canvas {
+        .electric-sparks {
             position: absolute;
             top: 0;
             left: 0;
@@ -61,38 +58,31 @@
             height: 100%;
             pointer-events: none;
         }
-
-        .highlight {
-            background-color: #c9a227;
-            color: #000;
-            padding: 0.2rem 0.5rem;
-            border-radius: 5px;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Hey! 👋 I'm <span class="highlight">Codi Ray</span></h1>
-        <div class="profile-img" id="profileImg">
-            <canvas id="electricEffect"></canvas>
-            <img src="image.png" alt="Codi Ray Logo">
-        </div>
+        <h1>Hey! 👋 I'm <span class="highlight" id="codiray">Codi Ray</span></h1>
         <p class="glow-text">Web developer with 3+ years of experience creating innovative digital solutions.</p>
     </div>
 
-    <div class="btn-top" onclick="scrollToTop()">⬆</div>
+    <canvas id="electricEffect" class="electric-sparks"></canvas>
 
     <script>
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
         const canvas = document.getElementById('electricEffect');
         const ctx = canvas.getContext('2d');
-        const profileImg = document.getElementById('profileImg');
+        const codiray = document.getElementById('codiray');
 
-        canvas.width = profileImg.clientWidth;
-        canvas.height = profileImg.clientHeight;
+        function resizeCanvas() {
+            const rect = codiray.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            canvas.style.top = `${rect.top + window.scrollY}px`;
+            canvas.style.left = `${rect.left + window.scrollX}px`;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
 
         function drawElectricEffect() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -109,9 +99,9 @@
             }
         }
 
-        profileImg.addEventListener('mouseenter', () => {
+        codiray.addEventListener('mouseenter', () => {
             const interval = setInterval(drawElectricEffect, 100);
-            profileImg.addEventListener('mouseleave', () => clearInterval(interval), { once: true });
+            codiray.addEventListener('mouseleave', () => clearInterval(interval), { once: true });
         });
     </script>
 </body>
