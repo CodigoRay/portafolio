@@ -258,13 +258,14 @@
     border: 2px solid transparent; /* Borde transparente en estado natural */
     background-color: transparent; /* Fondo transparente */
     color: #FF0000; /* Color de íconos de YouTube en estado natural */
+    transition: all 0.3s ease; /* Añadido para suavizar el cambio de estilo */
 }
 
 .contact-links .youtube:hover {
     border: 2px solid #CC0000; /* Borde rojo al hacer hover */
     background-color: #CC0000; /* Fondo rojo al hacer hover */
     color: #fff; /* Color blanco de los íconos cuando se pasa el cursor */
-    box-shadow: none; /* Elimina el destello amarillo alrededor */
+    box-shadow: 0 0 15px 5px #CC0000; /* Resplandor rojo similar a los otros íconos */
 }
 
     .contact-icon {
