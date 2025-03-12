@@ -20,16 +20,6 @@
             position: relative;
         }
 
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
         .container {
             text-align: center;
             padding: 5rem 1rem;
@@ -45,6 +35,11 @@
             font-size: 1.5rem;
         }
 
+        .profile-img {
+            position: relative;
+            display: inline-block;
+        }
+
         .profile-img img {
             width: 150px;
             border-radius: 50%;
@@ -56,19 +51,15 @@
         .profile-img img:hover {
             transform: scale(1.2);
             box-shadow: 0 0 15px 5px #c9a227, 0 0 30px 15px #f5e042;
-            animation: electric-effect 0.3s infinite alternate;
         }
 
-        @keyframes electric-effect {
-            0% {
-                filter: drop-shadow(0 0 5px #f5e042) drop-shadow(0 0 10px #f5e042);
-            }
-            50% {
-                filter: drop-shadow(0 0 15px #f5e042) drop-shadow(0 0 30px #f5e042);
-            }
-            100% {
-                filter: drop-shadow(0 0 5px #f5e042) drop-shadow(0 0 10px #f5e042);
-            }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
         }
 
         .highlight {
@@ -80,11 +71,10 @@
     </style>
 </head>
 <body>
-    <canvas id="particles"></canvas>
-
     <div class="container">
         <h1>Hey! 👋 I'm <span class="highlight">Codi Ray</span></h1>
-        <div class="profile-img">
+        <div class="profile-img" id="profileImg">
+            <canvas id="electricEffect"></canvas>
             <img src="image.png" alt="Codi Ray Logo">
         </div>
         <p class="glow-text">Web developer with 3+ years of experience creating innovative digital solutions.</p>
@@ -97,44 +87,32 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        const canvas = document.getElementById('particles');
+        const canvas = document.getElementById('electricEffect');
         const ctx = canvas.getContext('2d');
+        const profileImg = document.getElementById('profileImg');
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = profileImg.clientWidth;
+        canvas.height = profileImg.clientHeight;
 
-        const lightningBolts = Array.from({ length: 50 }, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            length: Math.random() * 100 + 50,
-            angle: Math.random() * Math.PI * 2,
-            speed: Math.random() * 2 + 1
-        }));
-
-        function drawBolts() {
+        function drawElectricEffect() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.strokeStyle = '#f5e042';
             ctx.lineWidth = 2;
-            ctx.shadowBlur = 15;
+            ctx.shadowBlur = 20;
             ctx.shadowColor = '#f5e042';
 
-            lightningBolts.forEach(bolt => {
-                bolt.y += bolt.speed;
-                if (bolt.y > canvas.height) bolt.y = 0;
-
+            for (let i = 0; i < 5; i++) {
                 ctx.beginPath();
-                ctx.moveTo(bolt.x, bolt.y);
-                ctx.lineTo(
-                    bolt.x + Math.cos(bolt.angle) * bolt.length,
-                    bolt.y + Math.sin(bolt.angle) * bolt.length
-                );
+                ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+                ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
                 ctx.stroke();
-            });
-
-            requestAnimationFrame(drawBolts);
+            }
         }
 
-        drawBolts();
+        profileImg.addEventListener('mouseenter', () => {
+            const interval = setInterval(drawElectricEffect, 100);
+            profileImg.addEventListener('mouseleave', () => clearInterval(interval), { once: true });
+        });
     </script>
 </body>
 </html>
