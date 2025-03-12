@@ -274,7 +274,9 @@
             
         </div>
 
-         <div class="section content-box">
+    
+    </div>
+   <div class="section content-box">
         <h2>Let's Talk</h2>
         <p>I am available for freelance work. Connect with me via:</p>
         <div class="contact-links">
@@ -284,8 +286,6 @@
             <a href="tu-enlace-instagram" target="_blank" class="instagram">Instagram: Cuenta Instagram</a>
         </div>
         
-    </div>
-
     <div class="btn-top" onclick="scrollToTop()">⬆</div>
 
     <script>
@@ -306,23 +306,7 @@
             speed: Math.random() * 2 + 1
         }));
 
-  function createParticles(event) {
-            const xPos = event.x;
-            const yPos = event.y;
-            for (let i = 0; i < 5; i++) {
-                particlesArray.push(new Particle(xPos, yPos));
-            }
-        }
- window.addEventListener('mousemove', createParticles);
-        function drawParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particlesArray.forEach((particle, index) => {
-                particle.update();
-                particle.draw();
-                if (particle.size <= 0.2) {
-                    particlesArray.splice(index, 1);
-                }
-            });
+
 
         
         function drawParticles() {
