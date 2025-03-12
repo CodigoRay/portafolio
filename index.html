@@ -26,6 +26,7 @@
             padding: 0;
             overflow-y: auto;
             height: 100vh;
+            position: relative;
         }
 
         .stars, .stars2, .stars3 {
@@ -34,7 +35,7 @@
             height: 100%;
             top: 0;
             left: 0;
-            z-index: -1;
+            z-index: -2;
             background: url('https://www.script-tutorials.com/demos/360/images/stars.png') repeat;
             animation: moveStars 50s linear infinite;
         }
@@ -54,6 +55,17 @@
         @keyframes moveStars {
             from { transform: translateY(0); }
             to { transform: translateY(-100%); }
+        }
+
+        .fog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/foggy-birds.png');
+            opacity: 0.15;
+            z-index: -1;
         }
 
         .container {
@@ -97,20 +109,20 @@
         /* ======= SECCIÓN DE TECNOLOGÍAS ======= */
         .tech-container {
             margin-top: 40px;
-            text-align: left;
+            text-align: center;
         }
 
         .tech-title {
-            text-align: center;
             color: #c9a227;
+            text-shadow: 0 0 15px #c9a227;
         }
 
         .tech-list {
             display: flex;
-            gap: 10px;
-            flex-wrap: nowrap;
-            overflow-x: auto; /* Permite el desplazamiento horizontal */
-            padding: 10px 0;
+            gap: 20px;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: moveTech 20s linear infinite;
         }
 
         .tech-item {
@@ -127,6 +139,11 @@
             transform: scale(1.1);
             background: #c9a227;
             color: #000;
+        }
+
+        @keyframes moveTech {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
         }
 
         /* ======= SECCIONES DORADAS ======= */
@@ -181,6 +198,7 @@
     <div class="stars"></div>
     <div class="stars2"></div>
     <div class="stars3"></div>
+    <div class="fog"></div>
 
     <div class="container">
         <h1>Hey! 👋 I'm Codi Ray</h1>
