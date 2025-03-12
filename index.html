@@ -283,12 +283,13 @@
  
 
 
-       /* Estilo para el widget de Google Translate */
+           /* Estilo para el widget de Google Translate */
         #google_translate_element {
             position: fixed;
             top: 10px;
             left: 10px;
             z-index: 1000;
+            display: block; /* Inicia visible */
         }
 
         /* Eliminar el logo de Google Translate */
@@ -308,14 +309,12 @@
         .goog-te-menu-value:hover {
             cursor: pointer;
         }
-
-
       
      </style>
  </head>
  <body>
 
-  <span> CHANGE LANGUAJE  <!-- Google Translate Widget -->
+    <!-- Google Translate Widget -->
     <div id="google_translate_element"></div>
 
     <!-- Script para cargar el widget de Google Translate -->
@@ -328,11 +327,20 @@
                 autoDisplay: false
             }, 'google_translate_element');
         }
+
+        // Detectar el scroll y ocultar el widget
+        window.onscroll = function() {
+            var translateWidget = document.getElementById("google_translate_element");
+            if (window.scrollY > 0) {
+                translateWidget.style.display = "none"; // Ocultar el widget cuando se hace scroll
+            } else {
+                translateWidget.style.display = "block"; // Mostrar el widget cuando no se hace scroll
+            }
+        }
     </script>
 
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-</span>
   
      <canvas id="particles"></canvas>
  
