@@ -283,41 +283,43 @@
  
 
 
-         /* Estilo para la mini tarjeta en la esquina superior izquierda */
+      /* Estilo para la mini tarjeta en la esquina superior izquierda */
         .language-card {
             position: fixed;
-            top: 20px;
-            left: 20px;
+            top: 10px;
+            left: 10px;
             background-color: #343a40; /* Fondo oscuro */
-            border-radius: 8px;
-            padding: 10px 15px;
-            width: 200px;
+            border-radius: 5px;
+            padding: 5px 10px;
+            width: 150px; /* Hacer la tarjeta más pequeña */
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            z-index: 1000; /* Para asegurarse de que la tarjeta esté por encima de otros elementos */
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+            display: block; /* Por defecto visible */
+            font-size: 12px; /* Tamaño de fuente reducido */
         }
 
         .language-card h3 {
-            font-size: 14px;
-            margin-bottom: 5px;
+            font-size: 12px;
+            margin-bottom: 3px;
             color: white; /* Letras blancas */
         }
 
         .language-card p {
-            font-size: 12px;
+            font-size: 10px;
             color: white; /* Letras blancas */
         }
 
         .google-translate-btn {
             background-color: #007bff; /* Azul */
             color: white;
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 12px;
             cursor: pointer;
             text-transform: uppercase;
-            margin-top: 10px;
             border: none;
+            width: 100%; /* Hace el botón un poco más amplio */
         }
 
         .google-translate-btn:hover {
@@ -346,16 +348,21 @@
         .goog-te-menu-value:hover {
             cursor: pointer;
         }
+      
+
+
+      
      </style>
  </head>
  <body>
 
-
- <!-- Mini tarjeta para cambiar idioma -->
-    <div class="language-card">
+    <div class="language-card" id="language-card">
         <h3>Cambiar idioma</h3>
-        <p>Click the button below to change the language of this page.</p>
-<br>  <!-- Google Translate Widget -->
+        <p>Click to change the language</p>
+
+
+<br>
+<!-- Google Translate Widget -->
     <div id="google_translate_element"></div>
 
     <script type="text/javascript">
@@ -372,13 +379,17 @@
         // Función para mostrar el widget de Google Translate al hacer clic en el botón
         function showTranslate() {
             var element = document.getElementById('google_translate_element');
+            var card = document.getElementById('language-card');
             element.style.display = 'block'; // Mostrar el widget de Google Translate
+            card.style.display = 'none'; // Ocultar la tarjeta después de hacer clic
         }
     </script>
 
     <!-- Script para cargar el widget de Google Translate -->
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
- <br>
+</body>
+
+<br>
 
      
         <button class="google-translate-btn" onclick="showTranslate()">Change Language</button>
