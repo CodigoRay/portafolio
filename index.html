@@ -5,15 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Codi Ray - Web Developer</title>
 
-    <!-- Política de Seguridad CSP -->
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self'; 
-        style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; 
-        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; 
-        script-src 'self'; 
-        img-src 'self' data:;
-    ">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
@@ -24,220 +15,108 @@
             color: #fff;
             margin: 0;
             padding: 0;
-            overflow-y: auto;
-            height: 100vh;
-            position: relative;
-        }
-
-        .stars, .stars2, .stars3 {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -2;
-            background: url('https://www.script-tutorials.com/demos/360/images/stars.png') repeat;
-            animation: moveStars 50s linear infinite;
-        }
-
-        .stars2 {
-            background-size: 200% 200%;
-            opacity: 0.5;
-            animation: moveStars 100s linear infinite;
-        }
-
-        .stars3 {
-            background-size: 300% 300%;
-            opacity: 0.3;
-            animation: moveStars 150s linear infinite;
-        }
-
-        @keyframes moveStars {
-            from { transform: translateY(0); }
-            to { transform: translateY(-100%); }
-        }
-
-        .fog {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/foggy-birds.png');
-            opacity: 0.15;
-            z-index: -1;
         }
 
         .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            padding-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            gap: 30px;
+        }
+
+        .card {
+            background: #121212;
+            border: 2px solid #c9a227;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.5);
+            padding: 30px;
             text-align: center;
-        }
-
-        h1 {
-            color: #c9a227;
-            text-shadow: 0 0 20px #c9a227;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-            display: inline-block;
-            margin-bottom: -40px;
-            transition: transform 0.3s ease-in-out;
-            box-shadow: 0 0 15px #c9a227;
+            width: 100%;
+            max-width: 400px;
         }
 
         .profile-img img {
-            width: 100%;
-            height: auto;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #c9a227;
         }
 
-        .profile-img:hover {
-            transform: scale(1.1);
-        }
-
-        .glow-text {
-            color: #fff;
-            text-shadow: 0 0 10px #c9a227, 0 0 20px #c9a227;
-        }
-
-        /* ======= SECCIÓN DE TECNOLOGÍAS ======= */
-        .tech-container {
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .tech-title {
+        h1, h2 {
             color: #c9a227;
-            text-shadow: 0 0 15px #c9a227;
         }
 
         .tech-list {
-            display: flex;
-            gap: 20px;
-            overflow: hidden;
-            white-space: nowrap;
-            animation: moveTech 20s linear infinite;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            padding: 0;
         }
 
         .tech-item {
-            background: #121212;
-            padding: 8px 15px;
-            border-radius: 5px;
+            background: #1e1e1e;
+            padding: 10px;
+            border-radius: 10px;
             color: #c9a227;
-            min-width: 120px;
-            text-align: center;
-            transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
-        }
-
-        .tech-item:hover {
-            transform: scale(1.1);
-            background: #c9a227;
-            color: #000;
-        }
-
-        @keyframes moveTech {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
-        }
-
-        /* ======= SECCIONES DORADAS ======= */
-        .gold-container {
-            background: rgba(201, 162, 39, 0.15);
-            border: 2px solid rgba(201, 162, 39, 0.5);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 30px auto;
-            width: 90%;
-            box-shadow: 0 0 20px rgba(201, 162, 39, 0.7);
-        }
-
-        .service-item, .contact-item {
-            background: #121212;
-            padding: 8px 15px;
-            border-radius: 5px;
-            color: #c9a227;
-            transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
-        }
-
-        .service-item:hover, .contact-item:hover {
-            transform: scale(1.1);
-            background: #c9a227;
-            color: #000;
+            box-shadow: 0 2px 5px rgba(201, 162, 39, 0.5);
         }
 
         .btn {
-            display: inline-block;
             background: #c9a227;
             color: #000;
             padding: 10px 20px;
             border-radius: 30px;
-            cursor: pointer;
             box-shadow: 0 0 15px #c9a227;
-        }
-
-        .btn:hover {
-            box-shadow: 0 0 30px #c9a227;
+            cursor: pointer;
         }
 
         footer {
             text-align: center;
             margin-top: 40px;
-            padding: 10px 0;
             color: #c9a227;
         }
     </style>
 </head>
 <body>
 
-    <div class="stars"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div>
-    <div class="fog"></div>
-
     <div class="container">
-        <h1>Hey! 👋 I'm Codi Ray</h1>
-        <div class="profile-img">
-            <img src="image.png" alt="Codi Ray Logo">
+        <div class="card">
+            <h1>Hey! 👋 I'm Codi Ray</h1>
+            <div class="profile-img">
+                <img src="image.png" alt="Codi Ray Logo">
+            </div>
+            <p>Web developer with 3+ years of experience creating innovative digital solutions.</p>
         </div>
-        <p class="glow-text">Web developer with 3+ years of experience creating innovative digital solutions.</p>
-    </div>
 
-    <!-- Sección de Tecnologías -->
-    <div class="tech-container">
-        <h2 class="tech-title">🌐 Technologies I Work With</h2>
-        <div class="tech-list">
-            <div class="tech-item">HTML</div>
-            <div class="tech-item">CSS</div>
-            <div class="tech-item">JavaScript</div>
-            <div class="tech-item">PHP</div>
-            <div class="tech-item">Laravel</div>
-            <div class="tech-item">MySQL</div>
-            <div class="tech-item">Tailwind</div>
-            <div class="tech-item">WordPress</div>
-            <div class="tech-item">React</div>
-            <div class="tech-item">Vue.js</div>
+        <div class="card">
+            <h2>🌐 Technologies I Work With</h2>
+            <div class="tech-list">
+                <div class="tech-item">HTML</div>
+                <div class="tech-item">CSS</div>
+                <div class="tech-item">JavaScript</div>
+                <div class="tech-item">PHP</div>
+                <div class="tech-item">Laravel</div>
+                <div class="tech-item">MySQL</div>
+                <div class="tech-item">Tailwind</div>
+                <div class="tech-item">WordPress</div>
+                <div class="tech-item">React</div>
+                <div class="tech-item">Vue.js</div>
+            </div>
         </div>
-    </div>
 
-    <!-- Sección de Servicios -->
-    <div class="gold-container">
-        <h2>💼 Services</h2>
-        <div class="service-item">✔ Web Development (Front-End, Back-End, Responsive)</div>
-        <div class="service-item">✔ API Development (RESTful, GraphQL)</div>
-        <div class="service-item">✔ E-Commerce (Shopify, WooCommerce, Magento)</div>
-    </div>
+        <div class="card">
+            <h2>💼 Services</h2>
+            <p>✔ Web Development (Front-End, Back-End, Responsive)</p>
+            <p>✔ API Development (RESTful, GraphQL)</p>
+            <p>✔ E-Commerce (Shopify, WooCommerce, Magento)</p>
+        </div>
 
-    <!-- Sección de Contacto -->
-    <div class="gold-container">
-        <h2>📞 Contact</h2>
-        <div class="contact-item">📞 WhatsApp: +57 3017182357</div>
-        <div class="contact-item">📩 Email: contacto@codiray.dev</div>
+        <div class="card">
+            <h2>📞 Contact</h2>
+            <p>📞 WhatsApp: +57 3017182357</p>
+            <p>📩 Email: contacto@codiray.dev</p>
+        </div>
     </div>
 
     <footer>
