@@ -254,15 +254,18 @@
         border: 2px solid #E4405F;
         background-color: #E4405F;
     }
-    .contact-links .youtube {
-        border: 2px solid #FF0000;
-        background-color: #FF0000;
-    }
+.contact-links .youtube {
+    border: 2px solid transparent; /* Borde transparente en estado natural */
+    background-color: transparent; /* Fondo transparente */
+    color: #FF0000; /* Color de íconos de YouTube en estado natural */
+}
 
-    .contact-links .youtube:hover {
-        border: 2px solid #CC0000;
-        background-color: #CC0000;
-    }
+.contact-links .youtube:hover {
+    border: 2px solid #CC0000; /* Borde rojo al hacer hover */
+    background-color: #CC0000; /* Fondo rojo al hacer hover */
+    color: #fff; /* Color blanco de los íconos cuando se pasa el cursor */
+}
+
     .contact-icon {
         width: 24px;
         height: 24px;
@@ -356,7 +359,7 @@
             WhatsApp
         </a>
         <a href="https://www.linkedin.com/in/yourprofile" class="linkedin" target="_blank">
-            <img src="https://es.wikipedia.org/wiki/Archivo:LinkedIn_logo_initials.png#/media/Archivo:LinkedIn_icon.svg" alt="LinkedIn" class="contact-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="contact-icon">
             LinkedIn
         </a>
         <a href="https://t.me/yourusername" class="telegram" target="_blank">
