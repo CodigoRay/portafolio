@@ -297,97 +297,99 @@
     </div>
 
 <!-- aca comienza la parte fij a -->
+
+
+
+
+
 <div class="section content-box">
-    <!-- Div para el texto fijo -->
-    <div class="fixed-container">
-        <h2 class="fixed-text">I am fully dedicated to creating authentic digital solutions. I want to help make your dreams come true</h2>
-    </div>
-    
     <!-- Div para el texto que cambia -->
     <div class="fade-container">
-        <h2 class="fade-text">Lo que no te mata, te hace más fuerte – Friedrich Nietzsche</h2>
+        <h2 class="fade-text">I am fully dedicated to creating authentic digital solutions. I want to help make your dreams come true</h2>
+    </div>
+
+    <!-- Div para el contador -->
+    <div id="counter" style="text-align: center; color: white; font-size: 20px; margin-top: 10px;">
+        5 seconds remaining
     </div>
 </div>
 
 <script>
     const quotes = [
-        "Lo que no te mata, te hace más fuerte – Friedrich Nietzsche",
-        "Los éxitos más importantes se consiguen cuando existe la posibilidad de fracasar – Mark Zuckerberg",
-        "Siempre da más de lo que esperan de ti – Larry Page",
-        "La forma de empezar es dejar de hablar y empezar a actuar – Walt Disney",
-        "Dar el ejemplo no es la principal manera de influir sobre los demás; es la única manera – Albert Einstein",
-        "Nunca sabes lo fuerte que eres, hasta que ser fuerte es la única opción que te queda – Bob Marley",
-        "Hay dos maneras de vivir la vida: una como si nada fuese un milagro, la otra como si todo fuese un milagro – Albert Einstein",
-        "El secreto de la existencia humana no solo está en vivir, sino también en saber para qué se vive – Fiódor Dostoievski",
-        "Pasamos mucho tiempo ganándonos la vida, pero no el suficiente tiempo viviéndola – Teresa de Calcuta",
-        "Incluso la gente que afirma que no podemos hacer nada para cambiar nuestro destino, mira antes de cruzar la calle – Stephen Hawking",
-        "Un día sin reír es un día perdido – Charles Chaplin",
-        "No puedes permitirte estar discapacitado en espíritu a la vez que físicamente – Stephen Hawking",
-        "Cada día sabemos más y entendemos menos – Albert Einstein",
-        "La innovación distingue a los líderes de los seguidores – Steve Jobs",
-        "La educación es el arma más poderosa para cambiar el mundo – Nelson Mandela"
+        "I am fully dedicated to creating authentic digital solutions. I want to help make your dreams come true",
+        "What doesn't kill you makes you stronger – Friedrich Nietzsche",
+        "The most important successes are achieved when there is a possibility of failure – Mark Zuckerberg",
+        "Always give more than they expect from you – Larry Page",
+        "The way to start is to stop talking and begin doing – Walt Disney",
+        "Leading by example is not the primary way to influence others; it is the only way – Albert Einstein",
+        "You never know how strong you are until being strong is your only choice – Bob Marley",
+        "There are two ways to live your life: one is as though nothing is a miracle, the other is as though everything is a miracle – Albert Einstein",
+        "The secret to human existence is not only to live, but also to know for what purpose you live – Fyodor Dostoevsky",
+        "We spend so much time earning a living, but not enough time living it – Mother Teresa",
+        "Even people who claim that we can do nothing to change our fate look before crossing the street – Stephen Hawking",
+        "A day without laughter is a day wasted – Charles Chaplin",
+        "You cannot afford to be disabled in spirit while being physically disabled – Stephen Hawking",
+        "The more we know, the less we understand – Albert Einstein",
+        "Innovation distinguishes leaders from followers – Steve Jobs",
+        "Education is the most powerful weapon to change the world – Nelson Mandela"
     ];
 
     let index = 0;
+    let countdown = 5; // Initial countdown time in seconds
 
     function changeText() {
         const textElement = document.querySelector('.fade-text');
+        const counterElement = document.getElementById('counter');
         
-        // Cambiar el texto según el índice del arreglo
+        // Change the text according to the index of the array
         textElement.textContent = quotes[index];
         
-        // Cambiar al siguiente índice, o volver al principio si se llegó al final
+        // Move to the next quote, or loop back to the start
         index = (index + 1) % quotes.length;
         
-        // Aplicar la clase para hacer que el texto se desvanezca
+        // Reset the countdown timer
+        countdown = 5;
+
+        // Apply fade-out class to make the text disappear
         textElement.classList.remove('fade-in');
         textElement.classList.add('fade-out');
         
-        // Después de que se desvanezca, aplicar el nuevo texto y volver a mostrarlo
+        // After the fade-out, apply the new text and fade-in again
         setTimeout(function() {
             textElement.classList.remove('fade-out');
             textElement.classList.add('fade-in');
-        }, 500); // Tiempo de transición (desvanecimiento)
+        }, 500); // Transition time (fade out and in)
     }
 
-    // Cambiar el texto cada 5 segundos
-    setInterval(changeText, 5000);
+    // Update the counter every second
+    function updateCounter() {
+        const counterElement = document.getElementById('counter');
+        
+        if (countdown > 0) {
+            counterElement.textContent = countdown + ' seconds remaining';
+            countdown--;
+        } else {
+            changeText();
+        }
+    }
+
+    // Update the counter every second
+    setInterval(updateCounter, 1000);
 </script>
 
 <style>
-    /* Estilo para el contenedor del texto fijo */
-    .fixed-container {
-        position: absolute;
-        top: 20px; /* Ajusta esto para que se quede en la parte superior de la página */
-        left: 0;
-        width: 100%;
-        background-color: transparent; /* Fondo transparente */
-        text-align: center;
-        padding: 20px;
-        z-index: 10;
-        overflow: hidden; /* Evitar el desbordamiento */
-    }
-
-    /* Estilo para el texto fijo */
-    .fixed-text {
-        font-size: 24px;
-        font-weight: bold;
-        color: white; /* Cambié el color a blanco para que sea visible */
-        margin: 0;
-    }
-
-    /* Estilo para el contenedor del texto que cambia */
+    /* Style for the container of the changing text */
     .fade-container {
-        margin-top: 120px; /* Deja espacio debajo del texto fijo */
+        margin-top: 120px; /* Space below the fixed text */
         text-align: center;
     }
 
-    /* Estilo para el texto que cambia */
+    /* Style for the changing text */
     .fade-text {
         opacity: 1;
         transition: opacity 1s ease-in-out;
         font-size: 24px;
-        color: white; /* Cambié el color a blanco */
+        color: white; /* White text color */
     }
 
     .fade-in {
@@ -398,6 +400,7 @@
         opacity: 0;
     }
 </style>
+
 
 
     
