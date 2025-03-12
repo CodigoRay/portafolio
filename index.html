@@ -96,6 +96,7 @@
             margin-bottom: 1rem;
         }
 
+        /* Contact Links */
         .contact-links a {
             display: inline-block;
             margin: 10px 15px;
@@ -135,6 +136,77 @@
             border-color: #C13584; /* Morado de Instagram */
             box-shadow: 0 0 15px 5px #C13584;
         }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill {
+            text-align: center;
+            padding: 15px;
+            border: 2px solid #4C4C4C;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .skill:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill:hover img {
+            transform: scale(1.2);
+        }
+
+        .php:hover {
+            border-color: #777bb3;
+            box-shadow: 0 0 15px 5px #777bb3;
+        }
+
+        .laravel:hover {
+            border-color: #f05340;
+            box-shadow: 0 0 15px 5px #f05340;
+        }
+
+        .mysql:hover {
+            border-color: #00758f;
+            box-shadow: 0 0 15px 5px #00758f;
+        }
+
+        .js:hover {
+            border-color: #f7df1e;
+            box-shadow: 0 0 15px 5px #f7df1e;
+        }
+
+        .html:hover {
+            border-color: #e34f26;
+            box-shadow: 0 0 15px 5px #e34f26;
+        }
+
+        .css:hover {
+            border-color: #2965f1;
+            box-shadow: 0 0 15px 5px #2965f1;
+        }
+
+        .tailwind:hover {
+            border-color: #38bdf8;
+            box-shadow: 0 0 15px 5px #38bdf8;
+        }
+
+        .vs-code:hover {
+            border-color: #007acc;
+            box-shadow: 0 0 15px 5px #007acc;
+        }
     </style>
 </head>
 <body>
@@ -163,25 +235,40 @@
     </div>
 
     <div class="section content-box">
-        <h2>Services I Offer</h2>
-        <p>Web Development<br>Front-End<br>Back-End<br>Responsive</p>
-        <p>API Development<br>RESTful APIs<br>GraphQL APIs<br>SOAP APIs</p>
-        <p>E-Commerce Apps<br>Shopify<br>WooCommerce<br>Magento</p>
-    </div>
-
-    <div class="section content-box">
         <h2>My Skills</h2>
-        <p>Figma - Basic<br>Wordpress - Advanced<br>PHP - Advanced<br>Laravel - Advanced<br>MySQL - Intermediate<br>JavaScript - Intermediate<br>HTML - Advanced<br>CSS - Advanced<br>Tailwind - Advanced<br>VS Code - Advanced</p>
-    </div>
-
-    <div class="section content-box">
-        <h2>Let's Talk</h2>
-        <p>I am available for freelance work. Connect with me via:</p>
-        <div class="contact-links">
-            <a href="https://wa.link/nuwm57" target="_blank" class="whatsapp">WhatsApp: +57 3017182357</a>
-            <a href="https://msng.link/o?directordelaacademia=tg" target="_blank" class="telegram">Telegram: @CodiRay</a>
-            <a href="https://www.linkedin.com/in/rayrodriguezpro/" target="_blank" class="linkedin">LinkedIn:  LinkedIn</a>
-            <a href="https://www.instagram.com/codigoray/" target="_blank" class="instagram">Instagram:  Instagram</a>
+        <div class="skills-list">
+            <div class="skill php">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP_logo.png" alt="PHP">
+                <p>PHP - Advanced</p>
+            </div>
+            <div class="skill laravel">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Laravel.svg" alt="Laravel">
+                <p>Laravel - Advanced</p>
+            </div>
+            <div class="skill mysql">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/MySQL_logo.png" alt="MySQL">
+                <p>MySQL - Intermediate</p>
+            </div>
+            <div class="skill js">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/JavaScript_logo_and_wordmark.svg" alt="JavaScript">
+                <p>JavaScript - Intermediate</p>
+            </div>
+            <div class="skill html">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/HTML5_logo_and_wordmark.svg" alt="HTML">
+                <p>HTML - Advanced</p>
+            </div>
+            <div class="skill css">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS">
+                <p>CSS - Advanced</p>
+            </div>
+            <div class="skill tailwind">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS">
+                <p>Tailwind - Advanced</p>
+            </div>
+            <div class="skill vs-code">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Visual_Studio_Code_1.35_icon.png" alt="VS Code">
+                <p>VS Code - Advanced</p>
+            </div>
         </div>
     </div>
 
@@ -210,17 +297,16 @@
             ctx.fillStyle = '#FFD700';
             particles.forEach(particle => {
                 particle.y += particle.speed;
-                if (particle.y > canvas.height) particle.y = 0;
-
+                if (particle.y > canvas.height) {
+                    particle.y = 0;
+                }
                 ctx.beginPath();
                 ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
                 ctx.fill();
             });
-
-            requestAnimationFrame(drawParticles);
         }
 
-        drawParticles();
+        setInterval(drawParticles, 30);
     </script>
 </body>
 </html>
