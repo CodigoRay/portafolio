@@ -1,271 +1,308 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Codi Ray - Web Developer</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Orbitron', sans-serif;
+            background: #000;
+            color: #fff;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
-            background-color: #111;
-            color: white;
+            overflow-y: auto;
+            height: 100vh;
             position: relative;
         }
 
-        .section {
-            padding: 60px 30px;
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container, .section {
             text-align: center;
+            padding: 5rem 1rem;
+            max-width: 600px;
+            margin: auto;
         }
 
-        .skills {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+        .content-box {
+            background: rgba(25, 25, 25, 0.9);
+            border: 2px solid #FFD700;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .skill {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s ease;
+        .content-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px 5px #FFD700;
         }
 
-        .skill:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        h1 {
+            font-size: 3rem;
         }
 
-        .skill img {
-            width: 50px;
-            height: 50px;
+        .glow-text {
+            font-size: 1.5rem;
         }
 
-        .skill p {
-            margin-top: 10px;
-            font-size: 14px;
+        .profile-img img {
+            width: 150px;
+            border-radius: 50%;
+            margin-top: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .contact-links a {
-            text-decoration: none;
-            color: white;
-            padding: 10px 20px;
-            margin: 5px;
-            border: 2px solid white;
+        .profile-img img:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 15px 5px #FFD700;
+            border: 2px solid #FFD700;
+        }
+
+        .highlight {
+            background-color: #FFD700;
+            color: #000;
+            padding: 0.2rem 0.5rem;
             border-radius: 5px;
-            font-size: 16px;
-            transition: all 0.3s ease;
         }
-
-        .contact-links a:hover {
-            background-color: white;
-            color: black;
-        }
-
-        .whatsapp { border-color: #25D366; }
-        .linkedin { border-color: #0A66C2; }
-        .telegram { border-color: #0088CC; }
-        .instagram { border-color: #E4405F; }
 
         .btn-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #ffcc00;
-            color: black;
+            background: #FFD700;
+            color: #000;
             border: none;
-            padding: 15px;
             border-radius: 50%;
+            padding: 10px 15px;
             cursor: pointer;
-            display: none;
-            z-index: 999;
+            font-size: 24px;
         }
 
-        .btn-top:hover {
-            background-color: #e5b000;
+        .section h2 {
+            margin-bottom: 1rem;
         }
 
-        #particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+        /* Contact Links */
+        .contact-links a {
+            display: inline-block;
+            margin: 10px 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: transparent;
+            text-decoration: none;
+            border: 2px solid #4C4C4C; /* Borde suave gris al principio */
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
 
-        .projects {
+        /* Efecto hover con borde tridimensional */
+        .contact-links a:hover {
+            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-links a.whatsapp:hover {
+            border-color: #25D366; /* Verde de WhatsApp */
+            box-shadow: 0 0 15px 5px #25D366;
+        }
+
+        .contact-links a.telegram:hover {
+            border-color: #0088cc; /* Azul de Telegram */
+            box-shadow: 0 0 15px 5px #0088cc;
+        }
+
+        .contact-links a.linkedin:hover {
+            border-color: #0A66C2; /* Azul de LinkedIn */
+            box-shadow: 0 0 15px 5px #0A66C2;
+        }
+
+        .contact-links a.instagram:hover {
+            border-color: #C13584; /* Morado de Instagram */
+            box-shadow: 0 0 15px 5px #C13584;
+        }
+
+        .skills-list {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 20px;
-            text-align: left;
+            margin-top: 20px;
         }
 
-        .project {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+        .skill {
+            text-align: center;
+            padding: 15px;
+            border: 2px solid #4C4C4C;
             border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .skill:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
             transition: transform 0.3s ease;
         }
 
-        .project:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        .skill:hover img {
+            transform: scale(1.2);
         }
 
-        .project a {
-            color: #ffcc00;
-            text-decoration: none;
-            font-weight: bold;
+        .php:hover {
+            border-color: #777bb3;
+            box-shadow: 0 0 15px 5px #777bb3;
         }
 
-        .project a:hover {
-            text-decoration: underline;
+        .laravel:hover {
+            border-color: #f05340;
+            box-shadow: 0 0 15px 5px #f05340;
+        }
+
+        .mysql:hover {
+            border-color: #00758f;
+            box-shadow: 0 0 15px 5px #00758f;
+        }
+
+        .js:hover {
+            border-color: #f7df1e;
+            box-shadow: 0 0 15px 5px #f7df1e;
+        }
+
+        .html:hover {
+            border-color: #e34f26;
+            box-shadow: 0 0 15px 5px #e34f26;
+        }
+
+        .css:hover {
+            border-color: #2965f1;
+            box-shadow: 0 0 15px 5px #2965f1;
+        }
+
+        .tailwind:hover {
+            border-color: #38bdf8;
+            box-shadow: 0 0 15px 5px #38bdf8;
+        }
+
+        .vs-code:hover {
+            border-color: #007acc;
+            box-shadow: 0 0 15px 5px #007acc;
         }
     </style>
 </head>
 <body>
     <canvas id="particles"></canvas>
 
-    <!-- Dedication Section -->
-    <div class="section">
+    <div class="container">
+        <h1>Hey! 👋 I'm <span class="highlight">Codi Ray</span></h1>
+        <div class="profile-img">
+            <img src="image.png" alt="Codi Ray Logo">
+        </div>
+        <p class="glow-text">Web developer with 3+ years of experience creating innovative digital solutions.</p>
+    </div>
+
+    <div class="section content-box">
         <h2>I am fully dedicated to creating authentic digital solutions.</h2>
     </div>
 
-    <!-- Skills Section -->
-    <div class="section">
+    <div class="section content-box">
+        <h2>Web Design</h2>
+        <p><b>Eswap - Online Store</b><br>Developing an online fashion store based on the Eswap UI design. I'm coding it from scratch using Laravel, turning the visual concept into a fully functional platform.</p>
+        <p>See demo ↗</p>
+
+        <h2>Web App</h2>
+        <p><b>Only Immorals</b><br>A web app with a business model similar to OnlyFans, designed in Figma and fully developed from scratch. It showcases a seamless user experience and a robust platform for content creators.</p>
+        <p>See Demo ↗</p>
+    </div>
+
+    <div class="section content-box">
         <h2>My Skills</h2>
-        <div class="skills">
-            <div class="skill html">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/HTML5_logo_and_wordmark.svg/640px-HTML5_logo_and_wordmark.svg.png" alt="HTML5">
-                <p>HTML - Advanced</p>
-            </div>
-            <div class="skill css">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/640px-CSS3_logo.svg.png" alt="CSS3">
-                <p>CSS - Advanced</p>
-            </div>
-            <div class="skill tailwind">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Tailwind_CSS_Logo.svg" alt="Tailwind CSS">
-                <p>Tailwind - Advanced</p>
-            </div>
-            <div class="skill vs-code">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Visual_Studio_Code_1.35_icon.svg" alt="VS Code">
-                <p>VS Code - Advanced</p>
-            </div>
+        <div class="skills-list">
             <div class="skill php">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP_logo.png" alt="PHP">
                 <p>PHP - Advanced</p>
             </div>
-            <div class="skill wordpress">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/WordPress_logo_2013.svg" alt="WordPress">
-                <p>WordPress - Advanced</p>
-            </div>
             <div class="skill laravel">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel_logo.svg" alt="Laravel">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Laravel.svg" alt="Laravel">
                 <p>Laravel - Advanced</p>
             </div>
             <div class="skill mysql">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/MySQL.svg/640px-MySQL.svg.png" alt="MySQL">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/MySQL_logo.png" alt="MySQL">
                 <p>MySQL - Intermediate</p>
             </div>
-            <div class="skill javascript">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/JavaScript-logo.png" alt="JavaScript">
+            <div class="skill js">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/JavaScript_logo_and_wordmark.svg" alt="JavaScript">
                 <p>JavaScript - Intermediate</p>
             </div>
+            <div class="skill html">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/HTML5_logo_and_wordmark.svg" alt="HTML">
+                <p>HTML - Advanced</p>
+            </div>
+            <div class="skill css">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS">
+                <p>CSS - Advanced</p>
+            </div>
+            <div class="skill tailwind">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS">
+                <p>Tailwind - Advanced</p>
+            </div>
+            <div class="skill vs-code">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Visual_Studio_Code_1.35_icon.png" alt="VS Code">
+                <p>VS Code - Advanced</p>
+            </div>
         </div>
     </div>
 
-    <!-- Projects Section -->
-    <div class="section">
-        <h2>Web Design</h2>
-        <div class="projects">
-            <div class="project">
-                <h3>Eswap - Online Store</h3>
-                <p>Developing an online fashion store based on the Eswap UI design. I'm coding it from scratch using Laravel, turning the visual concept into a fully functional platform.</p>
-                <a href="https://link-to-demo.com" target="_blank">See demo ↗</a>
-            </div>
-            <div class="project">
-                <h3>Only Immorals - Web App</h3>
-                <p>A web app with a business model similar to OnlyFans, designed in Figma and fully developed from scratch. It showcases a seamless user experience and a robust platform for content creators.</p>
-                <a href="https://link-to-demo.com" target="_blank">See Demo ↗</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Contact Section (Let's Talk) -->
-    <div class="section content-box contact-links">
-        <h2>Let's Talk!</h2>
-        <a href="https://wa.me/123456789" class="whatsapp">WhatsApp</a>
-        <a href="https://www.linkedin.com/in/yourprofile" class="linkedin">LinkedIn</a>
-        <a href="https://t.me/yourusername" class="telegram">Telegram</a>
-        <a href="https://www.instagram.com/yourprofile" class="instagram">Instagram</a>
-    </div>
-
-    <!-- Back to Top Button -->
-    <button class="btn-top" onclick="scrollToTop()">↑</button>
+    <div class="btn-top" onclick="scrollToTop()">⬆</div>
 
     <script>
-        // Function to scroll back to top
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Particle Animation
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const particlesArray = [];
-
-        class Particle {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.size = Math.random() * 5 + 1;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.speedY = Math.random() * 1 - 0.5;
-                this.color = 'gold';
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.size > 0.2) this.size -= 0.1;
-            }
-
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function createParticles(event) {
-            const xPos = event.x;
-            const yPos = event.y;
-            for (let i = 0; i < 5; i++) {
-                particlesArray.push(new Particle(xPos, yPos));
-            }
-        }
-
-        window.addEventListener('mousemove', createParticles);
+        const particles = Array.from({ length: 50 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 3 + 1,
+            speed: Math.random() * 2 + 1
+        }));
 
         function drawParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particlesArray.forEach((particle, index) => {
-                particle.update();
-                particle.draw();
-                if (particle.size <= 0.2) {
-                    particlesArray.splice(index, 1);
+            ctx.fillStyle = '#FFD700';
+            particles.forEach(particle => {
+                particle.y += particle.speed;
+                if (particle.y > canvas.height) {
+                    particle.y = 0;
                 }
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                ctx.fill();
             });
         }
 
