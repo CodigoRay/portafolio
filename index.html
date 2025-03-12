@@ -5,15 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Codi Ray - Web Developer</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
         body {
+            font-family: 'Orbitron', sans-serif;
             background: #000;
-            color: #0F0;
-            font-family: monospace;
+            color: #fff;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow-y: auto;
+            height: 100vh;
+            position: relative;
         }
+
+        .stars, .stars2, .stars3 {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -2;
+            background: url('https://www.script-tutorials.com/demos/360/images/stars.png') repeat;
+            animation: moveStars 50s linear infinite;
+        }
+
+        .stars2 { background-size: 200% 200%; opacity: 0.5; animation: moveStars 100s linear infinite; }
+        .stars3 { background-size: 300% 300%; opacity: 0.3; animation: moveStars 150s linear infinite; }
+
+        @keyframes moveStars {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100%); }
+        }
+
+        .fog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/foggy-birds.png');
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding-top: 50px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1.5s forwards;
+        }
+
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+        h1 { color: #c9a227; text-shadow: 0 0 20px #c9a227; }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: inline-block;
+            margin-bottom: -40px;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 0 15px #c9a227;
+            position: relative;
+        }
+
+        .profile-img img { width: 100%; height: auto; }
+
+        .btn-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #c9a227;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 15px #c9a227;
+        }
+
+        .btn-top:hover { box-shadow: 0 0 30px #c9a227; }
 
         canvas {
             position: fixed;
@@ -21,108 +99,69 @@
             left: 0;
             width: 100%;
             height: 100%;
+            pointer-events: none;
             z-index: -1;
-        }
-
-        .container {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding-top: 50px;
-        }
-
-        h1 {
-            color: #0F0;
-            text-shadow: 0 0 20px #0F0;
-        }
-
-        .nav {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        .nav a {
-            color: #0F0;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        .social-links {
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            color: #0F0;
-            text-decoration: none;
-            margin: 0 10px;
         }
     </style>
 </head>
 <body>
-    <canvas id="matrixCanvas"></canvas>
-
-    <div class="nav">
-        <a href="#">Inicio</a>
-        <a href="#">Proyectos</a>
-        <a href="#">Sobre mí</a>
-        <a href="#">Contacto</a>
-    </div>
+    <canvas id="particles"></canvas>
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+    <div class="fog"></div>
 
     <div class="container">
         <h1>Hey! 👋 I'm Codi Ray</h1>
-        <p>Web developer with 3+ years of experience creating innovative digital solutions.</p>
-        <div class="social-links">
-            <a href="https://github.com" target="_blank">GitHub</a>
-            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-            <a href="https://twitter.com" target="_blank">Twitter</a>
+        <div class="profile-img">
+            <img src="image.png" alt="Codi Ray Logo">
         </div>
+        <p class="glow-text">Web developer with 3+ years of experience creating innovative digital solutions.</p>
     </div>
 
+    <div class="btn-top" onclick="scrollToTop()">⬆</div>
+
     <script>
-        const canvas = document.getElementById('matrixCanvas');
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const matrixChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()".split("");
-        const fontSize = 18;
-        const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(0);
+        const particles = Array.from({ length: 100 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            length: Math.random() * 50 + 20,
+            speedX: Math.random() * 2 - 1,
+            speedY: Math.random() * 2 - 1
+        }));
 
-        function drawMatrix() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = '#c9a227';
+            ctx.lineWidth = 2;
 
-            ctx.fillStyle = "#0F0";
-            ctx.font = `${fontSize}px monospace`;
+            particles.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
 
-            drops.forEach((y, index) => {
-                const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
-                const x = index * fontSize;
-                ctx.fillText(text, x, y * fontSize);
+                if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
 
-                if (y * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[index] = 0;
-                }
-
-                drops[index]++;
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p.x + p.length, p.y + p.length * 0.5);
+                ctx.stroke();
             });
 
-            requestAnimationFrame(drawMatrix);
+            requestAnimationFrame(drawParticles);
         }
 
-        drawMatrix();
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+        drawParticles();
     </script>
 </body>
 </html>
