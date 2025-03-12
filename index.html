@@ -1,195 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Immoral.dev - Portafolio</title>
-    
-    <!-- Fuente Poppins -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
-    
-    <!-- FontAwesome para íconos -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
+    <title>Foro Interstellar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        /* Estilo general */
         body {
-            background-color: #0d0d0d;
+            font-family: 'Orbitron', sans-serif;
+            background: #000;
             color: #fff;
-            font-family: 'Poppins', sans-serif;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        header {
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            margin: 0;
-        }
-
-        header h1 span {
-            color: #e63946;
-        }
-
-        header p {
-            margin: 10px 0;
-            font-size: 1.2rem;
-        }
-
-        button {
-            background-color: #e63946;
-            color: #fff;
-            border: none;
-            padding: 10px 30px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        button:hover {
-            background-color: #c62828;
-        }
-
-        .services, .skills, .contact {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .card {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 10px auto;
-            max-width: 300px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-        }
-
-        .skills {
-            position: relative;
             overflow: hidden;
-            white-space: nowrap;
+            position: relative;
         }
 
-        .skills .skill-list {
-            display: inline-block;
-            animation: moveSkills 20s linear infinite;
-        }
-
-        .skills .skill-list span {
-            display: inline-block;
-            background-color: #262626;
-            padding: 8px 15px;
-            border-radius: 5px;
-            border: 1px solid #555;
-            margin: 0 10px;
-            transition: transform 0.3s, background-color 0.3s;
-        }
-
-        .skills .skill-list span:hover {
-            transform: scale(1.2);
-            background-color: #FFD700;
-            color: #000;
-            border: 1px solid #FFD700;
-        }
-
-        @keyframes moveSkills {
-            from {
-                transform: translateX(100%);
-            }
-            to {
-                transform: translateX(-100%);
-            }
-        }
-
-        form {
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        input, textarea {
-            background-color: #262626;
-            border: 1px solid #555;
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
+        /* Fondo animado estilo espacio */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            margin: 5px 0;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 1) 80%), url('https://source.unsplash.com/1600x900/?space,stars') no-repeat center/cover;
+            z-index: -1;
+            animation: starAnimation 20s infinite alternate;
         }
 
-        textarea {
-            height: 100px;
+        @keyframes starAnimation {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        /* Paneles interactivos */
+        .panel {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(201, 162, 39, 0.5); /* Dorado suave */
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.7);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .panel:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(201, 162, 39, 1);
+        }
+
+        /* Títulos */
+        h1 {
+            color: #c9a227;
+            text-align: center;
+            text-shadow: 0 0 20px #c9a227;
+        }
+
+        h2 {
+            color: #fff;
+        }
+
+        /* Botones neón */
+        .btn {
+            display: inline-block;
+            background: #c9a227;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 0 15px #c9a227;
+            transition: box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 30px #c9a227, 0 0 50px #c9a227;
+        }
+
+        /* Estilo para el texto con efecto de destello */
+        .glow-text {
+            color: #fff;
+            text-shadow: 0 0 10px #c9a227, 0 0 20px #c9a227, 0 0 30px #c9a227;
         }
     </style>
 </head>
 <body>
 
-    <!-- Encabezado -->
-    <header>
-        <h1>Hey!, <span>Immoral</span></h1>
-        <p>I am Giovanni, a web developer with 3+ years of experience.</p>
-        <button>See Projects</button>
-    </header>
+    <h1>Foro Interstellar</h1>
 
-    <!-- Servicios -->
-    <section class="services">
-        <h2>My Services Area</h2>
-        <div class="card">
-            <h3>Web Development</h3>
-            <p>Create your web applications with the latest technologies.</p>
-        </div>
-        <div class="card">
-            <h3>API Development</h3>
-            <p>Secure and efficient APIs for your applications.</p>
-        </div>
-        <div class="card">
-            <h3>E-Commerce Apps</h3>
-            <p>Create your online stores with the best platforms.</p>
-        </div>
-    </section>
+    <div class="panel">
+        <h2>🌌 Bienvenido a la Comunidad Interstellar</h2>
+        <p class="glow-text">Un lugar donde las ideas viajan a la velocidad de la luz.</p>
+        <button class="btn">Unirme al Viaje</button>
+    </div>
 
-    <!-- Habilidades -->
-    <section class="skills">
-        <h2>Professional Skills</h2>
-        <div class="skill-list">
-            <span>HTML</span>
-            <span>PHP</span>
-            <span>JavaScript</span>
-            <span>VS Code</span>
-            <span>CSS</span>
-            <span>SQL</span>
-            <span>Laravel</span>
-            <span>React</span>
-            <span>Python</span>
-            <span>Node.js</span>
-        </div>
-    </section>
+    <div class="panel">
+        <h2>📝 Crear Tema</h2>
+        <p class="glow-text">Comparte tus ideas, preguntas o experiencias.</p>
+        <button class="btn">Iniciar Tema</button>
+    </div>
 
-    <!-- Contacto -->
-    <section class="contact">
-        <h2>Let's Talk</h2>
-        <p>I'm available for freelance work. Connect with me via:</p>
-        <p>Whatsapp: +51 998177826</p>
-        <p>Telegram: @immoraldeveloper</p>
-        <p>Email: contacto@immoral.dev</p>
+    <div class="panel">
+        <h2>❓ Enviar Pregunta</h2>
+        <p class="glow-text">¿Dudas sobre el universo o la programación? ¡Pregunta aquí!</p>
+        <button class="btn">Enviar Pregunta</button>
+    </div>
 
-        <form>
-            <input type="text" placeholder="Full Name">
-            <input type="text" placeholder="Phone No.">
-            <input type="email" placeholder="Email">
-            <textarea placeholder="Message"></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
+    <div class="panel">
+        <h2>💬 Explorar el Foro</h2>
+        <p class="glow-text">Descubre las conversaciones más interesantes de la comunidad.</p>
+        <button class="btn">Explorar</button>
+    </div>
 
 </body>
 </html>
