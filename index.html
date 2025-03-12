@@ -283,57 +283,17 @@
  
 
 
-      /* Estilo para la mini tarjeta en la esquina superior izquierda */
-        .language-card {
+       /* Estilo para el widget de Google Translate */
+        #google_translate_element {
             position: fixed;
             top: 10px;
             left: 10px;
-            background-color: #343a40; /* Fondo oscuro */
-            border-radius: 5px;
-            padding: 5px 10px;
-            width: 150px; /* Hacer la tarjeta más pequeña */
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            z-index: 1000; /* Asegura que esté por encima de otros elementos */
-            display: block; /* Por defecto visible */
-            font-size: 12px; /* Tamaño de fuente reducido */
+            z-index: 1000;
         }
 
-        .language-card h3 {
-            font-size: 12px;
-            margin-bottom: 3px;
-            color: white; /* Letras blancas */
-        }
-
-        .language-card p {
-            font-size: 10px;
-            color: white; /* Letras blancas */
-        }
-
-        .google-translate-btn {
-            background-color: #007bff; /* Azul */
-            color: white;
-            padding: 6px 12px;
-            border-radius: 5px;
-            font-size: 12px;
-            cursor: pointer;
-            text-transform: uppercase;
-            border: none;
-            width: 100%; /* Hace el botón un poco más amplio */
-        }
-
-        .google-translate-btn:hover {
-            background-color: #0056b3; /* Azul más oscuro para hover */
-        }
-
-        /* Estilo para el widget de Google Translate */
-        #google_translate_element {
-            display: none; /* Inicialmente oculto */
-            margin-top: 10px;
-        }
-
+        /* Eliminar el logo de Google Translate */
         .goog-logo-link {
-            display: none !important; /* Eliminar logo de Google */
+            display: none !important;
         }
 
         .goog-te-menu-frame {
@@ -348,7 +308,6 @@
         .goog-te-menu-value:hover {
             cursor: pointer;
         }
-      
 
 
       
@@ -356,17 +315,11 @@
  </head>
  <body>
 
-    <div class="language-card" id="language-card">
-        <h3>Cambiar idioma</h3>
-        <p>Click to change the language</p>
-
-
-<br>
-<!-- Google Translate Widget -->
+    <!-- Google Translate Widget -->
     <div id="google_translate_element"></div>
 
+    <!-- Script para cargar el widget de Google Translate -->
     <script type="text/javascript">
-        // Inicialización del Google Translate Widget
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en', // Idioma original de la página
@@ -375,27 +328,9 @@
                 autoDisplay: false
             }, 'google_translate_element');
         }
-
-        // Función para mostrar el widget de Google Translate al hacer clic en el botón
-        function showTranslate() {
-            var element = document.getElementById('google_translate_element');
-            var card = document.getElementById('language-card');
-            element.style.display = 'block'; // Mostrar el widget de Google Translate
-            card.style.display = 'none'; // Ocultar la tarjeta después de hacer clic
-        }
     </script>
 
-    <!-- Script para cargar el widget de Google Translate -->
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</body>
-
-<br>
-
-     
-        <button class="google-translate-btn" onclick="showTranslate()">Change Language</button>
-    </div>
-
-  
 
 
   
