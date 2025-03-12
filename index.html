@@ -212,8 +212,10 @@
         display: flex;
         justify-content: center;
         gap: 20px;
+        flex-wrap: wrap; /* Permite que los elementos se ajusten cuando sea necesario */
+        margin-top: 20px;
     }
-    
+
     .contact-links a {
         color: #fff;
         text-decoration: none;
@@ -225,6 +227,7 @@
         border-radius: 5px;
         transition: all 0.3s ease;
         position: relative;
+        flex-shrink: 0; /* Evita que los elementos se encojan demasiado */
     }
 
     .contact-links a:hover {
@@ -255,6 +258,14 @@
     .contact-icon {
         width: 24px;
         height: 24px;
+    }
+
+    /* Media Query para pantallas pequeñas */
+    @media (max-width: 768px) {
+        .contact-links a {
+            font-size: 1rem; /* Ajusta el tamaño de la fuente en pantallas más pequeñas */
+            padding: 8px 15px; /* Reduce el padding */
+        }
     }
 
 
@@ -328,7 +339,7 @@
 
     
     </div>
- <div class="section content-box">
+<div class="section content-box">
     <h2>Let's Talk</h2>
     <p>I am available for freelance work. Connect with me via:</p>
     <div class="contact-links">
