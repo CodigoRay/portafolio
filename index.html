@@ -238,7 +238,7 @@
         <h2>My Skills</h2>
         <div class="skills-list">
             <div class="skill php">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP_logo.png" alt="PHP">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP_logo.png/800px-PHP_logo.png" alt="PHP">
                 <p>PHP - Advanced</p>
             </div>
             <div class="skill laravel">
@@ -254,25 +254,33 @@
                 <p>JavaScript - Intermediate</p>
             </div>
             <div class="skill html">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/HTML5_logo_and_wordmark.svg" alt="HTML">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/HTML5_logo.svg" alt="HTML5">
                 <p>HTML - Advanced</p>
             </div>
             <div class="skill css">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS3">
                 <p>CSS - Advanced</p>
             </div>
             <div class="skill tailwind">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Tailwind_CSS_Logo.svg" alt="Tailwind CSS">
                 <p>Tailwind - Advanced</p>
             </div>
             <div class="skill vs-code">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Visual_Studio_Code_1.35_icon.png" alt="VS Code">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Visual_Studio_Code_1.35_icon.svg" alt="VS Code">
                 <p>VS Code - Advanced</p>
             </div>
         </div>
     </div>
 
-    <div class="btn-top" onclick="scrollToTop()">⬆</div>
+    <div class="section content-box contact-links">
+        <h2>Let's Talk!</h2>
+        <a href="https://wa.me/123456789" class="whatsapp">WhatsApp</a>
+        <a href="https://www.linkedin.com/in/yourprofile" class="linkedin">LinkedIn</a>
+        <a href="https://t.me/yourusername" class="telegram">Telegram</a>
+        <a href="https://www.instagram.com/yourprofile" class="instagram">Instagram</a>
+    </div>
+
+    <button class="btn-top" onclick="scrollToTop()">↑</button>
 
     <script>
         function scrollToTop() {
@@ -285,24 +293,50 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const particles = Array.from({ length: 50 }, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            radius: Math.random() * 3 + 1,
-            speed: Math.random() * 2 + 1
-        }));
+        const particlesArray = [];
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = 'white';
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.1;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function createParticles(event) {
+            const xPos = event.x;
+            const yPos = event.y;
+            for (let i = 0; i < 5; i++) {
+                particlesArray.push(new Particle(xPos, yPos));
+            }
+        }
+
+        window.addEventListener('mousemove', createParticles);
 
         function drawParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#FFD700';
-            particles.forEach(particle => {
-                particle.y += particle.speed;
-                if (particle.y > canvas.height) {
-                    particle.y = 0;
+            particlesArray.forEach((particle, index) => {
+                particle.update();
+                particle.draw();
+                if (particle.size <= 0.2) {
+                    particlesArray.splice(index, 1);
                 }
-                ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-                ctx.fill();
             });
         }
 
