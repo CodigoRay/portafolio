@@ -297,8 +297,27 @@
     </div>
 
     <div class="section content-box">
-        <h2>I am fully dedicated to creating authentic digital solutions.</h2>
-    </div>
+    <h2 class="fade-text">I am fully dedicated to creating authentic digital solutions.</h2>
+</div>
+
+<script>
+    // Cambiar el texto después de un tiempo
+    setTimeout(function() {
+        document.querySelector('.fade-text').textContent = 'I want to help make your dreams come true';
+        document.querySelector('.fade-text').classList.add('fade-in');
+    }, 2000); // Espera 2 segundos antes de cambiar el texto
+</script>
+
+<style>
+    .fade-text {
+        opacity: 0;
+        transition: opacity 2s ease-in-out;
+    }
+
+    .fade-in {
+        opacity: 1;
+    }
+</style>
 
     <div class="section content-box">
         <h2>Web Design</h2>
