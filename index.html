@@ -95,6 +95,24 @@
         .section h2 {
             margin-bottom: 1rem;
         }
+
+        .contact-links a {
+            display: inline-block;
+            margin: 10px 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #FFD700;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            background-color: #ffcc00;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px 3px #FFD700;
+        }
     </style>
 </head>
 <body>
@@ -137,7 +155,12 @@
     <div class="section content-box">
         <h2>Let's Talk</h2>
         <p>I am available for freelance work. Connect with me via:</p>
-        <p>WhatsApp: +51 998177826<br>Telegram: @immoraldeveloper<br>Email: contacto@immoral.dev</p>
+        <div class="contact-links">
+            <a href="tu-enlace-whatsapp" target="_blank">WhatsApp: +51 998177826</a>
+            <a href="tu-enlace-telegram" target="_blank">Telegram: @immoraldeveloper</a>
+            <a href="tu-enlace-linkedin" target="_blank">LinkedIn: Cuenta LinkedIn</a>
+            <a href="tu-enlace-instagram" target="_blank">Instagram: Cuenta Instagram</a>
+        </div>
     </div>
 
     <div class="btn-top" onclick="scrollToTop()">⬆</div>
