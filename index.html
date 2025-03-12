@@ -35,13 +35,52 @@
             color: #0F0;
             text-shadow: 0 0 20px #0F0;
         }
+
+        .nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .nav a {
+            color: #0F0;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #0F0;
+            text-decoration: none;
+            margin: 0 10px;
+        }
     </style>
 </head>
 <body>
     <canvas id="matrixCanvas"></canvas>
+
+    <div class="nav">
+        <a href="#">Inicio</a>
+        <a href="#">Proyectos</a>
+        <a href="#">Sobre mí</a>
+        <a href="#">Contacto</a>
+    </div>
+
     <div class="container">
         <h1>Hey! 👋 I'm Codi Ray</h1>
         <p>Web developer with 3+ years of experience creating innovative digital solutions.</p>
+        <div class="social-links">
+            <a href="https://github.com" target="_blank">GitHub</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+        </div>
     </div>
 
     <script>
