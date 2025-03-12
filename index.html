@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Interstellar</title>
+    <title>Codi Ray - Web Developer</title>
+    
+    <!-- Política de Seguridad CSP -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self'; 
+        style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; 
+        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; 
+        script-src 'self'; 
+        img-src 'self' data:;
+    ">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
@@ -12,13 +22,12 @@
             font-family: 'Orbitron', sans-serif;
             background: #000;
             color: #fff;
-            height: 100vh;
             margin: 0;
+            padding: 0;
             overflow: hidden;
             position: relative;
         }
 
-        /* Fondo animado de estrellas */
         .stars, .stars2, .stars3 {
             position: absolute;
             width: 100%;
@@ -47,7 +56,42 @@
             to { transform: translateY(-100%); }
         }
 
-        /* Paneles interactivos */
+        .container {
+            width: 80%;
+            margin: auto;
+            padding-top: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #c9a227;
+            text-shadow: 0 0 20px #c9a227;
+        }
+
+        h2 {
+            color: #fff;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: inline-block;
+            margin-bottom: -40px;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 0 15px #c9a227;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: auto;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+
         .panel {
             background: rgba(255, 255, 255, 0.05);
             border: 2px solid rgba(201, 162, 39, 0.5);
@@ -56,44 +100,46 @@
             margin: 20px auto;
             width: 80%;
             box-shadow: 0 0 20px rgba(201, 162, 39, 0.7);
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .panel:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(201, 162, 39, 1);
-        }
-
-        /* Títulos */
-        h1 {
-            color: #c9a227;
-            text-align: center;
-            text-shadow: 0 0 20px #c9a227;
-        }
-
-        h2 {
+        .glow-text {
             color: #fff;
+            text-shadow: 0 0 10px #c9a227, 0 0 20px #c9a227;
+        }
+
+        .tech-container, .services-container, .contact-container {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .tech-list, .services-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-item, .service-item {
+            background: #121212;
+            padding: 8px 15px;
+            border-radius: 5px;
+            color: #c9a227;
         }
 
         .btn {
             display: inline-block;
             background: #c9a227;
             color: #000;
-            border: none;
             padding: 10px 20px;
             border-radius: 30px;
             cursor: pointer;
             box-shadow: 0 0 15px #c9a227;
-            transition: box-shadow 0.3s;
         }
 
         .btn:hover {
-            box-shadow: 0 0 30px #c9a227, 0 0 50px #c9a227;
-        }
-
-        .glow-text {
-            color: #fff;
-            text-shadow: 0 0 10px #c9a227, 0 0 20px #c9a227, 0 0 30px #c9a227;
+            box-shadow: 0 0 30px #c9a227;
         }
     </style>
 </head>
@@ -103,31 +149,73 @@
     <div class="stars2"></div>
     <div class="stars3"></div>
 
-    <h1>Portafolio Interstellar</h1>
-
-    <div class="panel">
-        <h2>🌌 Bienvenido a Mi Universo Digital</h2>
-        <p class="glow-text">Explora mis proyectos, habilidades y servicios.</p>
-        <button class="btn">Explorar</button>
+    <!-- Contenido Principal -->
+    <div class="container">
+        <h1>Hey! 👋 I'm Codi Ray</h1>
+        <div class="profile-img">
+            <img src="image.png" alt="Codi Ray Logo">
+        </div>
+        <p class="glow-text">Web developer with 3+ years of experience creating innovative digital solutions.</p>
     </div>
 
-    <div class="panel">
-        <h2>🛠️ Habilidades</h2>
-        <p class="glow-text">Dominio en desarrollo web, bases de datos y diseño UI/UX.</p>
-        <button class="btn">Ver Más</button>
+    <!-- Sección de Tecnologías -->
+    <div class="tech-container">
+        <h2>🌐 Technologies I Work With</h2>
+        <div class="tech-list">
+            <div class="tech-item">HTML</div>
+            <div class="tech-item">CSS</div>
+            <div class="tech-item">JavaScript</div>
+            <div class="tech-item">PHP</div>
+            <div class="tech-item">Laravel</div>
+            <div class="tech-item">MySQL</div>
+            <div class="tech-item">Tailwind</div>
+            <div class="tech-item">WordPress</div>
+            <div class="tech-item">React</div>
+            <div class="tech-item">Vue.js</div>
+        </div>
     </div>
 
+    <!-- Sección 'Acerca de mí' -->
     <div class="panel">
-        <h2>🚀 Proyectos Destacados</h2>
-        <p class="glow-text">Explora algunos de mis trabajos más impactantes.</p>
-        <button class="btn">Descubrir Proyectos</button>
+        <h2>🧑‍🚀 About Me</h2>
+        <p class="glow-text">I'm Codi Ray, a web developer with over 3 years of experience. I transform designs into functional, efficient interfaces focused on the user experience.</p>
     </div>
 
+    <!-- Sección de Proyectos -->
     <div class="panel">
-        <h2>💼 Servicios</h2>
-        <p class="glow-text">Ofrezco soluciones personalizadas en desarrollo web.</p>
-        <button class="btn">Ver Servicios</button>
+        <h2>🚀 Recent Projects</h2>
+        <div>
+            <h3>Web Design - Eswap</h3>
+            <p>Development of an online fashion store based on Eswap UI using Laravel.</p>
+            <a href="#" class="btn">See demo ⮕</a>
+
+            <h3>Web App - Only Immorals</h3>
+            <p>Platform similar to OnlyFans, designed and developed from scratch.</p>
+            <a href="#" class="btn">See demo ⮕</a>
+        </div>
     </div>
+
+    <!-- Sección de Servicios -->
+    <div class="services-container">
+        <h2>💼 Services</h2>
+        <div class="services-list">
+            <div class="service-item">✔ Web Development (Front-End, Back-End, Responsive)</div>
+            <div class="service-item">✔ API Development (RESTful, GraphQL)</div>
+            <div class="service-item">✔ E-Commerce (Shopify, WooCommerce, Magento)</div>
+        </div>
+    </div>
+
+    <!-- Sección de Contacto -->
+    <div class="contact-container">
+        <h2>📞 Contact</h2>
+        <p>I'm available for freelance projects. Contact me at:</p>
+        <p>📞 WhatsApp: +57 3017182357</p>
+        <p>📩 Email: contacto@codiray.dev</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Codi Ray. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
