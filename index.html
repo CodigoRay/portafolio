@@ -296,28 +296,70 @@
         <p class="glow-text">Web developer with 3+ years of experience creating innovative digital solutions.</p>
     </div>
 
-    <div class="section content-box">
-    <h2 class="fade-text">I am fully dedicated to creating authentic digital solutions.</h2>
+   <div class="section content-box">
+    <h2 class="fade-text">Lo que no te mata, te hace más fuerte – Friedrich Nietzsche</h2>
 </div>
 
 <script>
-    // Cambiar el texto después de un tiempo
-    setTimeout(function() {
-        document.querySelector('.fade-text').textContent = 'I want to help make your dreams come true';
-        document.querySelector('.fade-text').classList.add('fade-in');
-    }, 2000); // Espera 2 segundos antes de cambiar el texto
+    const quotes = [
+        "Lo que no te mata, te hace más fuerte – Friedrich Nietzsche",
+        "Los éxitos más importantes se consiguen cuando existe la posibilidad de fracasar – Mark Zuckerberg",
+        "Siempre da más de lo que esperan de ti – Larry Page",
+        "La forma de empezar es dejar de hablar y empezar a actuar – Walt Disney",
+        "Dar el ejemplo no es la principal manera de influir sobre los demás; es la única manera – Albert Einstein",
+        "Nunca sabes lo fuerte que eres, hasta que ser fuerte es la única opción que te queda – Bob Marley",
+        "Hay dos maneras de vivir la vida: una como si nada fuese un milagro, la otra como si todo fuese un milagro – Albert Einstein",
+        "El secreto de la existencia humana no solo está en vivir, sino también en saber para qué se vive – Fiódor Dostoievski",
+        "Pasamos mucho tiempo ganándonos la vida, pero no el suficiente tiempo viviéndola – Teresa de Calcuta",
+        "Incluso la gente que afirma que no podemos hacer nada para cambiar nuestro destino, mira antes de cruzar la calle – Stephen Hawking",
+        "Un día sin reír es un día perdido – Charles Chaplin",
+        "No puedes permitirte estar discapacitado en espíritu a la vez que físicamente – Stephen Hawking",
+        "Cada día sabemos más y entendemos menos – Albert Einstein",
+        "La innovación distingue a los líderes de los seguidores – Steve Jobs",
+        "La educación es el arma más poderosa para cambiar el mundo – Nelson Mandela"
+    ];
+
+    let index = 0;
+
+    function changeText() {
+        const textElement = document.querySelector('.fade-text');
+        
+        // Cambiar el texto según el índice del arreglo
+        textElement.textContent = quotes[index];
+        
+        // Cambiar al siguiente índice, o volver al principio si se llegó al final
+        index = (index + 1) % quotes.length;
+        
+        // Aplicar la clase para hacer que el texto se desvanezca
+        textElement.classList.remove('fade-in');
+        textElement.classList.add('fade-out');
+        
+        // Después de que se desvanezca, aplicar el nuevo texto y volver a mostrarlo
+        setTimeout(function() {
+            textElement.classList.remove('fade-out');
+            textElement.classList.add('fade-in');
+        }, 500); // Tiempo de transición (desvanecimiento)
+    }
+
+    // Cambiar el texto cada 5 segundos
+    setInterval(changeText, 5000);
 </script>
 
 <style>
     .fade-text {
-        opacity: 0;
-        transition: opacity 2s ease-in-out;
+        opacity: 1;
+        transition: opacity 1s ease-in-out;
     }
 
     .fade-in {
         opacity: 1;
     }
+
+    .fade-out {
+        opacity: 0;
+    }
 </style>
+
 
     <div class="section content-box">
         <h2>Web Design</h2>
