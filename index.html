@@ -281,11 +281,108 @@
          }
      }
  
- 
+
+
+
+  .language-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 300px;
+            text-align: center;
+            margin: 30px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .language-card p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .google-translate-btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 15px;
+        }
+
+        .google-translate-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilo para el widget de Google Translate */
+        #google_translate_element {
+            display: none; /* Inicialmente oculto */
+            margin-top: 20px;
+        }
+
+        .goog-logo-link {
+            display: none !important; /* Eliminar logo de Google */
+        }
+
+        .goog-te-menu-frame {
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .goog-te-menu-value {
+            display: none !important;
+        }
+
+        .goog-te-menu-value:hover {
+            cursor: pointer;
+        }
+      
  
      </style>
  </head>
  <body>
+
+
+ <!-- Mini tarjeta para cambiar idioma -->
+    <div class="language-card">
+        <h3>Cambiar idioma</h3>
+        <p>Click the button below to change the language of this page.</p>
+        <button class="google-translate-btn" onclick="showTranslate()">Change Language</button>
+    </div>
+
+    <!-- Google Translate Widget -->
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        // Inicialización del Google Translate Widget
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en', // Idioma original de la página
+                includedLanguages: 'es,fr,de,pt,it,ru', // Idiomas disponibles para traducir
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        // Función para mostrar el widget de Google Translate al hacer clic en el botón
+        function showTranslate() {
+            var element = document.getElementById('google_translate_element');
+            element.style.display = 'block'; // Mostrar el widget de Google Translate
+        }
+    </script>
+
+    <!-- Script para cargar el widget de Google Translate -->
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+  
      <canvas id="particles"></canvas>
  
      <div class="container">
