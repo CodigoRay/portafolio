@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Codi Ray - Web Developer</title>
-    
+
     <!-- Política de Seguridad CSP -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self'; 
@@ -24,12 +24,12 @@
             color: #fff;
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            position: relative;
+            overflow-y: auto;
+            height: 100vh;
         }
 
         .stars, .stars2, .stars3 {
-            position: absolute;
+            position: fixed;
             width: 100%;
             height: 100%;
             top: 0;
@@ -57,7 +57,8 @@
         }
 
         .container {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: auto;
             padding-top: 50px;
             text-align: center;
@@ -66,10 +67,6 @@
         h1 {
             color: #c9a227;
             text-shadow: 0 0 20px #c9a227;
-        }
-
-        h2 {
-            color: #fff;
         }
 
         .profile-img {
@@ -92,40 +89,69 @@
             transform: scale(1.1);
         }
 
-        .panel {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(201, 162, 39, 0.5);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px auto;
-            width: 80%;
-            box-shadow: 0 0 20px rgba(201, 162, 39, 0.7);
-        }
-
         .glow-text {
             color: #fff;
             text-shadow: 0 0 10px #c9a227, 0 0 20px #c9a227;
         }
 
-        .tech-container, .services-container, .contact-container {
-            background: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
+        /* ======= SECCIÓN DE TECNOLOGÍAS ======= */
+        .tech-container {
+            margin-top: 40px;
+            text-align: left;
         }
 
-        .tech-list, .services-list {
+        .tech-title {
+            text-align: center;
+            color: #c9a227;
+        }
+
+        .tech-list {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
             gap: 10px;
+            flex-wrap: nowrap;
+            overflow-x: auto; /* Permite el desplazamiento horizontal */
+            padding: 10px 0;
         }
 
-        .tech-item, .service-item {
+        .tech-item {
             background: #121212;
             padding: 8px 15px;
             border-radius: 5px;
             color: #c9a227;
+            min-width: 120px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+        }
+
+        .tech-item:hover {
+            transform: scale(1.1);
+            background: #c9a227;
+            color: #000;
+        }
+
+        /* ======= SECCIONES DORADAS ======= */
+        .gold-container {
+            background: rgba(201, 162, 39, 0.15);
+            border: 2px solid rgba(201, 162, 39, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px auto;
+            width: 90%;
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.7);
+        }
+
+        .service-item, .contact-item {
+            background: #121212;
+            padding: 8px 15px;
+            border-radius: 5px;
+            color: #c9a227;
+            transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+        }
+
+        .service-item:hover, .contact-item:hover {
+            transform: scale(1.1);
+            background: #c9a227;
+            color: #000;
         }
 
         .btn {
@@ -141,6 +167,13 @@
         .btn:hover {
             box-shadow: 0 0 30px #c9a227;
         }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 10px 0;
+            color: #c9a227;
+        }
     </style>
 </head>
 <body>
@@ -149,7 +182,6 @@
     <div class="stars2"></div>
     <div class="stars3"></div>
 
-    <!-- Contenido Principal -->
     <div class="container">
         <h1>Hey! 👋 I'm Codi Ray</h1>
         <div class="profile-img">
@@ -160,7 +192,7 @@
 
     <!-- Sección de Tecnologías -->
     <div class="tech-container">
-        <h2>🌐 Technologies I Work With</h2>
+        <h2 class="tech-title">🌐 Technologies I Work With</h2>
         <div class="tech-list">
             <div class="tech-item">HTML</div>
             <div class="tech-item">CSS</div>
@@ -175,42 +207,19 @@
         </div>
     </div>
 
-    <!-- Sección 'Acerca de mí' -->
-    <div class="panel">
-        <h2>🧑‍🚀 About Me</h2>
-        <p class="glow-text">I'm Codi Ray, a web developer with over 3 years of experience. I transform designs into functional, efficient interfaces focused on the user experience.</p>
-    </div>
-
-    <!-- Sección de Proyectos -->
-    <div class="panel">
-        <h2>🚀 Recent Projects</h2>
-        <div>
-            <h3>Web Design - Eswap</h3>
-            <p>Development of an online fashion store based on Eswap UI using Laravel.</p>
-            <a href="#" class="btn">See demo ⮕</a>
-
-            <h3>Web App - Only Immorals</h3>
-            <p>Platform similar to OnlyFans, designed and developed from scratch.</p>
-            <a href="#" class="btn">See demo ⮕</a>
-        </div>
-    </div>
-
     <!-- Sección de Servicios -->
-    <div class="services-container">
+    <div class="gold-container">
         <h2>💼 Services</h2>
-        <div class="services-list">
-            <div class="service-item">✔ Web Development (Front-End, Back-End, Responsive)</div>
-            <div class="service-item">✔ API Development (RESTful, GraphQL)</div>
-            <div class="service-item">✔ E-Commerce (Shopify, WooCommerce, Magento)</div>
-        </div>
+        <div class="service-item">✔ Web Development (Front-End, Back-End, Responsive)</div>
+        <div class="service-item">✔ API Development (RESTful, GraphQL)</div>
+        <div class="service-item">✔ E-Commerce (Shopify, WooCommerce, Magento)</div>
     </div>
 
     <!-- Sección de Contacto -->
-    <div class="contact-container">
+    <div class="gold-container">
         <h2>📞 Contact</h2>
-        <p>I'm available for freelance projects. Contact me at:</p>
-        <p>📞 WhatsApp: +57 3017182357</p>
-        <p>📩 Email: contacto@codiray.dev</p>
+        <div class="contact-item">📞 WhatsApp: +57 3017182357</div>
+        <div class="contact-item">📩 Email: contacto@codiray.dev</div>
     </div>
 
     <footer>
