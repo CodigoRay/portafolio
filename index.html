@@ -303,101 +303,72 @@
 
 
 <div class="section content-box">
-    <!-- Div para el texto que cambia -->
-    <div class="fade-container">
-        <h2 class="fade-text">I am fully dedicated to creating authentic digital solutions. I want to help make your dreams come true</h2>
-    </div>
-
-    <!-- Div para el contador -->
-    <div id="counter" style="text-align: center; color: white; font-size: 20px; margin-top: 10px;">
-        5 seconds remaining
-    </div>
+    <h2 id="quote-text">I am fully dedicated to creating authentic digital solutions. I want to help develop your dreams on the internet.</h2>
+    <div id="countdown"></div>
 </div>
 
 <script>
     const quotes = [
-        "I am fully dedicated to creating authentic digital solutions. I want to help make your dreams come true",
         "What doesn't kill you makes you stronger – Friedrich Nietzsche",
-        "The most important successes are achieved when there is a possibility of failure – Mark Zuckerberg",
-        "Always give more than they expect from you – Larry Page",
-        "The way to start is to stop talking and begin doing – Walt Disney",
-        "Leading by example is not the primary way to influence others; it is the only way – Albert Einstein",
+        "The most important successes come when there is the possibility of failure – Mark Zuckerberg",
+        "Always give more than what is expected of you – Larry Page",
+        "The way to get started is to stop talking and start doing – Walt Disney",
+        "Setting an example is not the main way to influence others; it's the only way – Albert Einstein",
         "You never know how strong you are until being strong is your only choice – Bob Marley",
-        "There are two ways to live your life: one is as though nothing is a miracle, the other is as though everything is a miracle – Albert Einstein",
-        "The secret to human existence is not only to live, but also to know for what purpose you live – Fyodor Dostoevsky",
-        "We spend so much time earning a living, but not enough time living it – Mother Teresa",
-        "Even people who claim that we can do nothing to change our fate look before crossing the street – Stephen Hawking",
+        "There are two ways to live your life: one is as if nothing is a miracle, the other is as if everything is a miracle – Albert Einstein",
+        "The secret of human existence is not only to live, but also to know for what purpose we live – Fyodor Dostoevsky",
+        "We spend a lot of time earning a living, but not enough time living it – Mother Teresa",
+        "Even those who say we can’t do anything to change our destiny, look before crossing the street – Stephen Hawking",
         "A day without laughter is a day wasted – Charles Chaplin",
-        "You cannot afford to be disabled in spirit while being physically disabled – Stephen Hawking",
-        "The more we know, the less we understand – Albert Einstein",
+        "You can’t afford to be disabled in spirit while physically – Stephen Hawking",
+        "Each day we know more and understand less – Albert Einstein",
         "Innovation distinguishes leaders from followers – Steve Jobs",
         "Education is the most powerful weapon to change the world – Nelson Mandela"
     ];
 
-    let index = 0;
-    let countdown = 5; // Initial countdown time in seconds
+    let currentQuoteIndex = 0;
 
-    function changeText() {
-        const textElement = document.querySelector('.fade-text');
-        const counterElement = document.getElementById('counter');
-        
-        // Change the text according to the index of the array
-        textElement.textContent = quotes[index];
-        
-        // Move to the next quote, or loop back to the start
-        index = (index + 1) % quotes.length;
-        
-        // Reset the countdown timer
-        countdown = 5;
+    // Function to change the text and start countdown
+    function changeQuote() {
+        const quoteText = document.getElementById('quote-text');
+        const countdown = document.getElementById('countdown');
 
-        // Apply fade-out class to make the text disappear
-        textElement.classList.remove('fade-in');
-        textElement.classList.add('fade-out');
-        
-        // After the fade-out, apply the new text and fade-in again
-        setTimeout(function() {
-            textElement.classList.remove('fade-out');
-            textElement.classList.add('fade-in');
-        }, 500); // Transition time (fade out and in)
+        // Change quote
+        quoteText.textContent = quotes[currentQuoteIndex];
+
+        // Countdown logic
+        let timeLeft = 5;  // Set countdown time in seconds
+        countdown.textContent = `Next quote in ${timeLeft} seconds...`;
+        const countdownInterval = setInterval(function() {
+            timeLeft--;
+            countdown.textContent = `Next quote in ${timeLeft} seconds...`;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;  // Loop through quotes
+                changeQuote();  // Change quote after countdown
+            }
+        }, 1000);  // Update countdown every second
     }
 
-    // Update the counter every second
-    function updateCounter() {
-        const counterElement = document.getElementById('counter');
-        
-        if (countdown > 0) {
-            counterElement.textContent = countdown + ' seconds remaining';
-            countdown--;
-        } else {
-            changeText();
-        }
-    }
-
-    // Update the counter every second
-    setInterval(updateCounter, 1000);
+    // Start the quote change cycle
+    changeQuote();
 </script>
 
 <style>
-    /* Style for the container of the changing text */
-    .fade-container {
-        margin-top: 120px; /* Space below the fixed text */
-        text-align: center;
-    }
-
-    /* Style for the changing text */
     .fade-text {
         opacity: 1;
-        transition: opacity 1s ease-in-out;
+        transition: opacity 2s ease-in-out;
+    }
+
+    #quote-text {
         font-size: 24px;
-        color: white; /* White text color */
+        margin-bottom: 10px;
     }
 
-    .fade-in {
-        opacity: 1;
-    }
-
-    .fade-out {
-        opacity: 0;
+    #countdown {
+        font-size: 18px;
+        color: #888;
     }
 </style>
 
