@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foro Interstellar</title>
+    <title>Portafolio Interstellar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-        /* Estilo general */
         body {
             font-family: 'Orbitron', sans-serif;
             background: #000;
@@ -19,28 +18,39 @@
             position: relative;
         }
 
-        /* Fondo animado estilo espacio */
-        body::before {
-            content: "";
+        /* Fondo animado de estrellas */
+        .stars, .stars2, .stars3 {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 1) 80%), url('https://source.unsplash.com/1600x900/?space,stars') no-repeat center/cover;
+            top: 0;
+            left: 0;
             z-index: -1;
-            animation: starAnimation 20s infinite alternate;
+            background: url('https://www.script-tutorials.com/demos/360/images/stars.png') repeat;
+            animation: moveStars 50s linear infinite;
         }
 
-        @keyframes starAnimation {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.1); opacity: 0.8; }
+        .stars2 {
+            background-size: 200% 200%;
+            opacity: 0.5;
+            animation: moveStars 100s linear infinite;
+        }
+
+        .stars3 {
+            background-size: 300% 300%;
+            opacity: 0.3;
+            animation: moveStars 150s linear infinite;
+        }
+
+        @keyframes moveStars {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100%); }
         }
 
         /* Paneles interactivos */
         .panel {
             background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(201, 162, 39, 0.5); /* Dorado suave */
+            border: 2px solid rgba(201, 162, 39, 0.5);
             border-radius: 15px;
             padding: 20px;
             margin: 20px auto;
@@ -65,7 +75,6 @@
             color: #fff;
         }
 
-        /* Botones neón */
         .btn {
             display: inline-block;
             background: #c9a227;
@@ -82,7 +91,6 @@
             box-shadow: 0 0 30px #c9a227, 0 0 50px #c9a227;
         }
 
-        /* Estilo para el texto con efecto de destello */
         .glow-text {
             color: #fff;
             text-shadow: 0 0 10px #c9a227, 0 0 20px #c9a227, 0 0 30px #c9a227;
@@ -91,30 +99,34 @@
 </head>
 <body>
 
-    <h1>Foro Interstellar</h1>
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <h1>Portafolio Interstellar</h1>
 
     <div class="panel">
-        <h2>🌌 Bienvenido a la Comunidad Interstellar</h2>
-        <p class="glow-text">Un lugar donde las ideas viajan a la velocidad de la luz.</p>
-        <button class="btn">Unirme al Viaje</button>
-    </div>
-
-    <div class="panel">
-        <h2>📝 Crear Tema</h2>
-        <p class="glow-text">Comparte tus ideas, preguntas o experiencias.</p>
-        <button class="btn">Iniciar Tema</button>
-    </div>
-
-    <div class="panel">
-        <h2>❓ Enviar Pregunta</h2>
-        <p class="glow-text">¿Dudas sobre el universo o la programación? ¡Pregunta aquí!</p>
-        <button class="btn">Enviar Pregunta</button>
-    </div>
-
-    <div class="panel">
-        <h2>💬 Explorar el Foro</h2>
-        <p class="glow-text">Descubre las conversaciones más interesantes de la comunidad.</p>
+        <h2>🌌 Bienvenido a Mi Universo Digital</h2>
+        <p class="glow-text">Explora mis proyectos, habilidades y servicios.</p>
         <button class="btn">Explorar</button>
+    </div>
+
+    <div class="panel">
+        <h2>🛠️ Habilidades</h2>
+        <p class="glow-text">Dominio en desarrollo web, bases de datos y diseño UI/UX.</p>
+        <button class="btn">Ver Más</button>
+    </div>
+
+    <div class="panel">
+        <h2>🚀 Proyectos Destacados</h2>
+        <p class="glow-text">Explora algunos de mis trabajos más impactantes.</p>
+        <button class="btn">Descubrir Proyectos</button>
+    </div>
+
+    <div class="panel">
+        <h2>💼 Servicios</h2>
+        <p class="glow-text">Ofrezco soluciones personalizadas en desarrollo web.</p>
+        <button class="btn">Ver Servicios</button>
     </div>
 
 </body>
