@@ -1,517 +1,590 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codi Ray - Web Developer</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-        body {
-            font-family: 'Orbitron', sans-serif;
-            background: #000;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            overflow-y: auto;
-            height: 100vh;
-            position: relative;
-        }
-
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .container, .section {
-            text-align: center;
-            padding: 5rem 1rem;
-            max-width: 600px;
-            margin: auto;
-        }
-
-        .content-box {
-            background: rgba(25, 25, 25, 0.9);
-            border: 2px solid #FFD700;
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .content-box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px 5px #FFD700;
-        }
-
-        h1 {
-            font-size: 3rem;
-        }
-
-        .glow-text {
-            font-size: 1.5rem;
-        }
-
-        .profile-img img {
-            width: 150px;
-            border-radius: 50%;
-            margin-top: 1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .profile-img img:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 15px 5px #FFD700;
-            border: 2px solid #FFD700;
-        }
-
-        .highlight {
-            background-color: #FFD700;
-            color: #000;
-            padding: 0.2rem 0.5rem;
-            border-radius: 5px;
-        }
-
-        .btn-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #FFD700;
-            color: #000;
-            border: none;
-            border-radius: 50%;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 24px;
-        }
-
-        .section h2 {
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Links */
-        .contact-links a {
-            display: inline-block;
-            margin: 10px 15px;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: transparent;
-            text-decoration: none;
-            border: 2px solid #4C4C4C; /* Borde suave gris al principio */
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        /* Efecto hover con borde tridimensional */
-        .contact-links a:hover {
-            color: #fff;
-            transform: scale(1.05);
-            box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        .contact-links a.whatsapp:hover {
-            border-color: #25D366; /* Verde de WhatsApp */
-            box-shadow: 0 0 15px 5px #25D366;
-        }
-
-        .contact-links a.telegram:hover {
-            border-color: #0088cc; /* Azul de Telegram */
-            box-shadow: 0 0 15px 5px #0088cc;
-        }
-
-        .contact-links a.linkedin:hover {
-            border-color: #0A66C2; /* Azul de LinkedIn */
-            box-shadow: 0 0 15px 5px #0A66C2;
-        }
-
-        .contact-links a.instagram:hover {
-            border-color: #C13584; /* Morado de Instagram */
-            box-shadow: 0 0 15px 5px #C13584;
-        }
-
-        .skills-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .skill {
-            text-align: center;
-            padding: 15px;
-            border: 2px solid #4C4C4C;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .skill:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        .skill img {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .skill:hover img {
-            transform: scale(1.2);
-        }
-
-        .php:hover {
-            border-color: #777bb3;
-            box-shadow: 0 0 15px 5px #777bb3;
-        }
-
-        .laravel:hover {
-            border-color: #f05340;
-            box-shadow: 0 0 15px 5px #f05340;
-        }
-
-        .mysql:hover {
-            border-color: #00758f;
-            box-shadow: 0 0 15px 5px #00758f;
-        }
-
-        .js:hover {
-            border-color: #f7df1e;
-            box-shadow: 0 0 15px 5px #f7df1e;
-        }
-
-        .html:hover {
-            border-color: #e34f26;
-            box-shadow: 0 0 15px 5px #e34f26;
-        }
-
-        .css:hover {
-            border-color: #2965f1;
-            box-shadow: 0 0 15px 5px #2965f1;
-        }
-
-        .tailwind:hover {
-            border-color: #38bdf8;
-            box-shadow: 0 0 15px 5px #38bdf8;
-        }
-
-        .vs-code:hover {
-            border-color: #007acc;
-            box-shadow: 0 0 15px 5px #007acc;
-        }
-
- .contact-links {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap; /* Permite que los elementos se ajusten cuando sea necesario */
-        margin-top: 20px;
-    }
-
-    .contact-links a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 1.2rem;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 20px;
-        border-radius: 5px;
-        transition: all 0.3s ease;
-        position: relative;
-        flex-shrink: 0; /* Evita que los elementos se encojan demasiado */
-    }
-
-    .contact-links a:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.8);
-    }
-
-    .contact-links .whatsapp:hover {
-        border: 2px solid #25D366;
-        background-color: #25D366;
-    }
-
-    .contact-links .linkedin:hover {
-        border: 2px solid #0A66C2;
-        background-color: #0A66C2;
-    }
-
-    .contact-links .telegram:hover {
-        border: 2px solid #0088CC;
-        background-color: #0088CC;
-    }
-
-    .contact-links .instagram:hover {
-        border: 2px solid #E4405F;
-        background-color: #E4405F;
-    }
-.contact-links .youtube {
-    border: 2px solid transparent; /* Borde transparente en estado natural */
-    background-color: transparent; /* Fondo transparente */
-    color: #FF0000; /* Color de íconos de YouTube en estado natural */
-    transition: all 0.3s ease; /* Añadido para suavizar el cambio de estilo */
-}
-
-.contact-links .youtube:hover {
-    border: 2px solid #CC0000; /* Borde rojo al hacer hover */
-    background-color: #CC0000; /* Fondo rojo al hacer hover */
-    color: #fff; /* Color blanco de los íconos cuando se pasa el cursor */
-    box-shadow: 0 0 15px 5px #CC0000; /* Resplandor rojo similar a los otros íconos */
-}
-
-    .contact-icon {
-        width: 24px;
-        height: 24px;
-    }
-
-    /* Media Query para pantallas pequeñas */
-    @media (max-width: 768px) {
-        .contact-links a {
-            font-size: 1rem; /* Ajusta el tamaño de la fuente en pantallas más pequeñas */
-            padding: 8px 15px; /* Reduce el padding */
-        }
-    }
-
-
-
-
-
-
-
-
-        
-        
-    </style>
-</head>
-<body>
-
-    
+ <html lang="es">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Codi Ray - Web Developer</title>
+ 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <style>
+         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+ 
+         body {
+             font-family: 'Orbitron', sans-serif;
+             background: #000;
+             color: #fff;
+             margin: 0;
+             padding: 0;
+             overflow-y: auto;
+             height: 100vh;
+             position: relative;
+         }
+ 
+         canvas {
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             pointer-events: none;
+             z-index: -1;
+         }
+ 
+         .container, .section {
+             text-align: center;
+             padding: 5rem 1rem;
+             max-width: 600px;
+             margin: auto;
+         }
+ 
+         .content-box {
+             background: rgba(25, 25, 25, 0.9);
+             border: 2px solid #FFD700;
+             border-radius: 15px;
+             padding: 2rem;
+             margin-bottom: 2rem;
+             transition: transform 0.3s ease, box-shadow 0.3s ease;
+         }
+ 
+         .content-box:hover {
+             transform: scale(1.05);
+             box-shadow: 0 0 15px 5px #FFD700;
+         }
+ 
+         h1 {
+             font-size: 3rem;
+         }
+ 
+         .glow-text {
+             font-size: 1.5rem;
+         }
+ 
+         .profile-img img {
+             width: 150px;
+             border-radius: 50%;
+             margin-top: 1rem;
+             transition: transform 0.3s ease, box-shadow 0.3s ease;
+         }
+ 
+         .profile-img img:hover {
+             transform: scale(1.2);
+             box-shadow: 0 0 15px 5px #FFD700;
+             border: 2px solid #FFD700;
+         }
+ 
+         .highlight {
+             background-color: #FFD700;
+             color: #000;
+             padding: 0.2rem 0.5rem;
+             border-radius: 5px;
+         }
+ 
+         .btn-top {
+             position: fixed;
+             bottom: 20px;
+             right: 20px;
+             background: #FFD700;
+             color: #000;
+             border: none;
+             border-radius: 50%;
+             padding: 10px 15px;
+             cursor: pointer;
+             font-size: 24px;
+         }
+ 
+         .section h2 {
+             margin-bottom: 1rem;
+         }
+ 
+         /* Contact Links */
+         .contact-links a {
+             display: inline-block;
+             margin: 10px 15px;
+             padding: 10px 20px;
+             font-size: 16px;
+             color: #fff;
+             background-color: transparent;
+             text-decoration: none;
+             border: 2px solid #4C4C4C; /* Borde suave gris al principio */
+             border-radius: 5px;
+             transition: all 0.3s ease;
+         }
+ 
+         /* Efecto hover con borde tridimensional */
+         .contact-links a:hover {
+             color: #fff;
+             transform: scale(1.05);
+             box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+         }
+ 
+         .contact-links a.whatsapp:hover {
+             border-color: #25D366; /* Verde de WhatsApp */
+             box-shadow: 0 0 15px 5px #25D366;
+         }
+ 
+         .contact-links a.telegram:hover {
+             border-color: #0088cc; /* Azul de Telegram */
+             box-shadow: 0 0 15px 5px #0088cc;
+         }
+ 
+         .contact-links a.linkedin:hover {
+             border-color: #0A66C2; /* Azul de LinkedIn */
+             box-shadow: 0 0 15px 5px #0A66C2;
+         }
+ 
+         .contact-links a.instagram:hover {
+             border-color: #C13584; /* Morado de Instagram */
+             box-shadow: 0 0 15px 5px #C13584;
+         }
+ 
+         .skills-list {
+             display: grid;
+             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+             gap: 20px;
+             margin-top: 20px;
+         }
+ 
+         .skill {
+             text-align: center;
+             padding: 15px;
+             border: 2px solid #4C4C4C;
+             border-radius: 10px;
+             transition: all 0.3s ease;
+         }
+ 
+         .skill:hover {
+             transform: scale(1.05);
+             box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+         }
+ 
+         .skill img {
+             width: 50px;
+             height: 50px;
+             margin-bottom: 10px;
+             transition: transform 0.3s ease;
+         }
+ 
+         .skill:hover img {
+             transform: scale(1.2);
+         }
+ 
+         .php:hover {
+             border-color: #777bb3;
+             box-shadow: 0 0 15px 5px #777bb3;
+         }
+ 
+         .laravel:hover {
+             border-color: #f05340;
+             box-shadow: 0 0 15px 5px #f05340;
+         }
+ 
+         .mysql:hover {
+             border-color: #00758f;
+             box-shadow: 0 0 15px 5px #00758f;
+         }
+ 
+         .js:hover {
+             border-color: #f7df1e;
+             box-shadow: 0 0 15px 5px #f7df1e;
+         }
+ 
+         .html:hover {
+             border-color: #e34f26;
+             box-shadow: 0 0 15px 5px #e34f26;
+         }
+ 
+         .css:hover {
+             border-color: #2965f1;
+             box-shadow: 0 0 15px 5px #2965f1;
+         }
+ 
+         .tailwind:hover {
+             border-color: #38bdf8;
+             box-shadow: 0 0 15px 5px #38bdf8;
+         }
+ 
+         .vs-code:hover {
+             border-color: #007acc;
+             box-shadow: 0 0 15px 5px #007acc;
+         }
+ 
+  .contact-links {
+         display: flex;
+         justify-content: center;
+         gap: 20px;
+         flex-wrap: wrap; /* Permite que los elementos se ajusten cuando sea necesario */
+         margin-top: 20px;
+     }
+ 
+     .contact-links a {
+         color: #fff;
+         text-decoration: none;
+         font-size: 1.2rem;
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         padding: 10px 20px;
+         border-radius: 5px;
+         transition: all 0.3s ease;
+         position: relative;
+         flex-shrink: 0; /* Evita que los elementos se encojan demasiado */
+     }
+ 
+     .contact-links a:hover {
+         transform: scale(1.05);
+         box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.8);
+     }
+ 
+     .contact-links .whatsapp:hover {
+         border: 2px solid #25D366;
+         background-color: #25D366;
+     }
+ 
+     .contact-links .linkedin:hover {
+         border: 2px solid #0A66C2;
+         background-color: #0A66C2;
+     }
+ 
+     .contact-links .telegram:hover {
+         border: 2px solid #0088CC;
+         background-color: #0088CC;
+     }
+ 
+     .contact-links .instagram:hover {
+         border: 2px solid #E4405F;
+         background-color: #E4405F;
+     }
+ .contact-links .youtube {
+     border: 2px solid transparent; /* Borde transparente en estado natural */
+     background-color: transparent; /* Fondo transparente */
+     color: #FF0000; /* Color de íconos de YouTube en estado natural */
+     transition: all 0.3s ease; /* Añadido para suavizar el cambio de estilo */
+ }
+ 
+ .contact-links .youtube:hover {
+     border: 2px solid #CC0000; /* Borde rojo al hacer hover */
+     background-color: #CC0000; /* Fondo rojo al hacer hover */
+     color: #fff; /* Color blanco de los íconos cuando se pasa el cursor */
+     box-shadow: 0 0 15px 5px #CC0000; /* Resplandor rojo similar a los otros íconos */
+ }
+ 
+     .contact-icon {
+         width: 24px;
+         height: 24px;
+     }
+ 
+     /* Media Query para pantallas pequeñas */
+     @media (max-width: 768px) {
+         .contact-links a {
+             font-size: 1rem; /* Ajusta el tamaño de la fuente en pantallas más pequeñas */
+             padding: 8px 15px; /* Reduce el padding */
+         }
+     }
+ 
+ 
+ 
+ 
+  /* Estilo del contenedor del selector */
+         #google_translate_element {
+             display: inline-block;
+             position: relative;
+             font-family: Arial, sans-serif;
+             margin-top: 20px;
+         }
+ 
+         /* Estilo para el botón "Cambiar Idioma" */
+         .google-translate-btn {
+             background-color: #007BFF;
+             color: white;
+             padding: 10px 20px;
+             border-radius: 5px;
+             font-size: 16px;
+             cursor: pointer;
+             text-align: center;
+             text-transform: uppercase;
+         }
+ 
+         .google-translate-btn:hover {
+             background-color: #0056b3;
+         }
+ 
+         /* Eliminar el logo de Google */
+         .goog-logo-link {
+             display: none !important;
+         }
+ 
+         .goog-te-menu-value {
+             display: none !important;
+         }
+ 
+         .goog-te-menu-value:hover {
+             cursor: pointer;
+         }
+ 
+         /* Personalización del dropdown del idioma */
+         .goog-te-menu-frame {
+             border: none !important;
+             box-shadow: none !important;
+         }
+ 
+ 
+ 
+         
+ 
+     </style>
+ </head>
+ <body>
+ 
+ <div id="google_translate_element"></div>
      
-    <!-- Contenedor del widget con el texto "Cambiar idioma" -->
-
-
-<!-- aca comienza la parte fij a -->
-
-
-
-
-
-<div class="section content-box">
-    <h2 id="quote-text">I am fully dedicated to creating authentic digital solutions. I want to help develop your dreams on the internet.</h2>
-    <div id="countdown"></div>
-</div>
-
-<script>
-    const quotes = [
-        "I am fully dedicated to creating authentic digital solutions. I want to help develop your dreams on the internet.",
-        "What doesn't kill you makes you stronger – Friedrich Nietzsche",
-        "The most important successes come when there is the possibility of failure – Mark Zuckerberg",
-        "Always give more than what is expected of you – Larry Page",
-        "The way to get started is to stop talking and start doing – Walt Disney",
-        "Setting an example is not the main way to influence others; it's the only way – Albert Einstein",
-        "You never know how strong you are until being strong is your only choice – Bob Marley",
-        "There are two ways to live your life: one is as if nothing is a miracle, the other is as if everything is a miracle – Albert Einstein",
-        "The secret of human existence is not only to live, but also to know for what purpose we live – Fyodor Dostoevsky",
-        "We spend a lot of time earning a living, but not enough time living it – Mother Teresa",
-        "Even those who say we can’t do anything to change our destiny, look before crossing the street – Stephen Hawking",
-        "A day without laughter is a day wasted – Charles Chaplin",
-        "You can’t afford to be disabled in spirit while physically – Stephen Hawking",
-        "Each day we know more and understand less – Albert Einstein",
-        "Innovation distinguishes leaders from followers – Steve Jobs",
-        "Education is the most powerful weapon to change the world – Nelson Mandela"
-    ];
-
-    let currentQuoteIndex = 0;
-
-    // Function to change the text and start countdown
-    function changeQuote() {
-        const quoteText = document.getElementById('quote-text');
-        const countdown = document.getElementById('countdown');
-
-        // Change quote
-        quoteText.textContent = quotes[currentQuoteIndex];
-
-        // Countdown logic
-        let timeLeft = 5;  // Set countdown time in seconds
-        countdown.textContent = `Next quote in ${timeLeft} seconds...`;
-        const countdownInterval = setInterval(function() {
-            timeLeft--;
-            countdown.textContent = `Next quote in ${timeLeft} seconds...`;
-
-            if (timeLeft <= 0) {
-                clearInterval(countdownInterval);
-                currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;  // Loop through quotes
-                changeQuote();  // Change quote after countdown
-            }
-        }, 1000);  // Update countdown every second
-    }
-
-    // Start the quote change cycle
-    changeQuote();
-</script>
-
-<style>
-    .fade-text {
-        opacity: 1;
-        transition: opacity 2s ease-in-out;
-    }
-
-    #quote-text {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-
-    #countdown {
-        font-size: 18px;
-        color: #888;
-    }
-</style>
-
-
-
-    
-<!-- aca termina la parte fija -->
-
-
-
-
-    <div class="section content-box">
-        <h2>Web Design</h2>
-        <p><b>Eswap - Online Store</b><br>Developing an online fashion store based on the Eswap UI design. I'm coding it from scratch using Laravel, turning the visual concept into a fully functional platform.</p>
-        <p>See demo ↗</p>
-
-        <h2>Web App</h2>
-        <p><b>Only Immorals</b><br>A web app with a business model similar to OnlyFans, designed in Figma and fully developed from scratch. It showcases a seamless user experience and a robust platform for content creators.</p>
-        <p>See Demo ↗</p>
-    </div>
-
-    <div class="section content-box">
-        <h2>My Skills</h2>
-        <div class="skills-list">
-            <div class="skill php">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP">
-                <p>PHP - Advanced</p>
-            </div>
-            <div class="skill laravel">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Laravel.png" alt="Laravel">
-                <p>Laravel - Advanced</p>
-            </div>
-            <div class="skill mysql">
-                <img src="https://upload.wikimedia.org/wikipedia/en/d/dd/MySQL_logo.svg" alt="MySQL">
-                <p>MySQL - Intermediate</p>
-            </div>
-            <div class="skill js">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript">
-                <p>JavaScript - Intermediate</p>
-            </div>
-            <div class="skill html">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png" alt="HTML">
-                <p>HTML - Advanced</p>
-            </div>
-            <div class="skill css">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS">
-                <p>CSS - Advanced</p>
-            </div>
-            <div class="skill tailwind">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS">
-                <p>Tailwind - Advanced</p>
-            </div>
-            <div class="skill vs-code">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Visual_Studio_Code_1.35_icon.png" alt="VS Code">
-                <p>VS Code - Advanced</p>
-            </div>
-
-            
-            
-        </div>
-
-    
-    </div>
-<div class="section content-box">
-    <h2>Let's Talk</h2>
-    <p>I am available for freelance work. Connect with me via:</p>
-    <div class="contact-links">
-        <a href="https://wa.me/123456789" class="whatsapp" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp" class="contact-icon">
-            WhatsApp
-        </a>
-        <a href="https://www.linkedin.com/in/yourprofile" class="linkedin" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="contact-icon">
-            LinkedIn
-        </a>
-        <a href="https://t.me/yourusername" class="telegram" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="contact-icon">
-            Telegram
-        </a>
-        <a href="https://www.instagram.com/yourprofile" class="instagram" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="Instagram" class="contact-icon">
-            Instagram
-        </a>
-             <a href="https://www.youtube.com/@CodigoRay" class="youtube" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="YouTube" class="contact-icon">
-            YouTube
-        </a>
-    </div>
-</div>
-    
-    <div class="btn-top" onclick="scrollToTop()">⬆</div>
-<!-- Footer Section -->
-<footer style="background-color: #111; padding: 40px 0; color: white; text-align: center;">
-    <p>&copy; Codiray 2025 All Rights Reserved</p>
-    <p style="font-size: 18px; font-style: italic; margin-top: 10px;">
-        "The only way to do great work is to love what you do." - Steve Jobs
-    </p>
-</footer>
-
-    <script>
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const particles = Array.from({ length: 50 }, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            radius: Math.random() * 3 + 1,
-            speed: Math.random() * 2 + 1
-        }));
-
-
-
-        
-        function drawParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#FFD700';
-            particles.forEach(particle => {
-                particle.y += particle.speed;
-                if (particle.y > canvas.height) {
-                    particle.y = 0;
-                }
-                ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-                ctx.fill();
-            });
-        }
-
-        setInterval(drawParticles, 30);
-    </script>
-
-
-
-    
-</body>
-</html>
+     <!-- Contenedor del widget con el texto "Cambiar idioma" -->
+     <div id="google_translate_element">
+         <button class="google-translate-btn" onclick="googleTranslateElementInit()">Cambiar idioma</button>
+     </div>
+ 
+     <!-- Google Translate Widget -->
+     <script type="text/javascript">
+         function googleTranslateElementInit() {
+             new google.translate.TranslateElement({
+                 pageLanguage: 'es', // idioma original de la página
+                 includedLanguages: 'es,fr,de,pt,it,ru', // idiomas disponibles para traducir
+                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                 includedLanguages: 'en,fr,de,pt,it,ru', // idiomas disponibles para traducir
+                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                 autoDisplay: false
+             }, 'google_translate_element');
+         }
+     </script>
+     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+ </body>
+ 
+ 
+ 
+ 
+ 
+     <canvas id="particles"></canvas>
+ 
+     <div class="container">
+         <h1>Hey! 👋 I'm <span class="highlight">Codi Ray</span></h1>
+         <div class="profile-img">
+             <img src="image.png" alt="Codi Ray Logo">
+         </div>
+         <p class="glow-text">Web developer with 3+ years of experience creating innovative digital solutions.</p>
+     </div>
+ 
+ <!-- aca comienza la parte fij a -->
+ 
+ 
+ 
+ 
+ 
+ <div class="section content-box">
+     <h2 id="quote-text">I am fully dedicated to creating authentic digital solutions. I want to help develop your dreams on the internet.</h2>
+     <div id="countdown"></div>
+ </div>
+ 
+ <script>
+     const quotes = [
+         "I am fully dedicated to creating authentic digital solutions. I want to help develop your dreams on the internet.",
+         "What doesn't kill you makes you stronger – Friedrich Nietzsche",
+         "The most important successes come when there is the possibility of failure – Mark Zuckerberg",
+         "Always give more than what is expected of you – Larry Page",
+         "The way to get started is to stop talking and start doing – Walt Disney",
+         "Setting an example is not the main way to influence others; it's the only way – Albert Einstein",
+         "You never know how strong you are until being strong is your only choice – Bob Marley",
+         "There are two ways to live your life: one is as if nothing is a miracle, the other is as if everything is a miracle – Albert Einstein",
+         "The secret of human existence is not only to live, but also to know for what purpose we live – Fyodor Dostoevsky",
+         "We spend a lot of time earning a living, but not enough time living it – Mother Teresa",
+         "Even those who say we can’t do anything to change our destiny, look before crossing the street – Stephen Hawking",
+         "A day without laughter is a day wasted – Charles Chaplin",
+         "You can’t afford to be disabled in spirit while physically – Stephen Hawking",
+         "Each day we know more and understand less – Albert Einstein",
+         "Innovation distinguishes leaders from followers – Steve Jobs",
+         "Education is the most powerful weapon to change the world – Nelson Mandela"
+     ];
+ 
+     let currentQuoteIndex = 0;
+ 
+     // Function to change the text and start countdown
+     function changeQuote() {
+         const quoteText = document.getElementById('quote-text');
+         const countdown = document.getElementById('countdown');
+ 
+         // Change quote
+         quoteText.textContent = quotes[currentQuoteIndex];
+ 
+         // Countdown logic
+         let timeLeft = 5;  // Set countdown time in seconds
+         countdown.textContent = `Next quote in ${timeLeft} seconds...`;
+         const countdownInterval = setInterval(function() {
+             timeLeft--;
+             countdown.textContent = `Next quote in ${timeLeft} seconds...`;
+ 
+             if (timeLeft <= 0) {
+                 clearInterval(countdownInterval);
+                 currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;  // Loop through quotes
+                 changeQuote();  // Change quote after countdown
+             }
+         }, 1000);  // Update countdown every second
+     }
+ 
+     // Start the quote change cycle
+     changeQuote();
+ </script>
+ 
+ <style>
+     .fade-text {
+         opacity: 1;
+         transition: opacity 2s ease-in-out;
+     }
+ 
+     #quote-text {
+         font-size: 24px;
+         margin-bottom: 10px;
+     }
+ 
+     #countdown {
+         font-size: 18px;
+         color: #888;
+     }
+ </style>
+ 
+ 
+ 
+ 
+ <!-- aca termina la parte fija -->
+ 
+ 
+ 
+ 
+     <div class="section content-box">
+         <h2>Web Design</h2>
+         <p><b>Eswap - Online Store</b><br>Developing an online fashion store based on the Eswap UI design. I'm coding it from scratch using Laravel, turning the visual concept into a fully functional platform.</p>
+         <p>See demo ↗</p>
+ 
+         <h2>Web App</h2>
+         <p><b>Only Immorals</b><br>A web app with a business model similar to OnlyFans, designed in Figma and fully developed from scratch. It showcases a seamless user experience and a robust platform for content creators.</p>
+         <p>See Demo ↗</p>
+     </div>
+ 
+     <div class="section content-box">
+         <h2>My Skills</h2>
+         <div class="skills-list">
+             <div class="skill php">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP">
+                 <p>PHP - Advanced</p>
+             </div>
+             <div class="skill laravel">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Laravel.png" alt="Laravel">
+                 <p>Laravel - Advanced</p>
+             </div>
+             <div class="skill mysql">
+                 <img src="https://upload.wikimedia.org/wikipedia/en/d/dd/MySQL_logo.svg" alt="MySQL">
+                 <p>MySQL - Intermediate</p>
+             </div>
+             <div class="skill js">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript">
+                 <p>JavaScript - Intermediate</p>
+             </div>
+             <div class="skill html">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png" alt="HTML">
+                 <p>HTML - Advanced</p>
+             </div>
+             <div class="skill css">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS">
+                 <p>CSS - Advanced</p>
+             </div>
+             <div class="skill tailwind">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS">
+                 <p>Tailwind - Advanced</p>
+             </div>
+             <div class="skill vs-code">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Visual_Studio_Code_1.35_icon.png" alt="VS Code">
+                 <p>VS Code - Advanced</p>
+             </div>
+ 
+ 
+ 
+         </div>
+ 
+ 
+     </div>
+ <div class="section content-box">
+     <h2>Let's Talk</h2>
+     <p>I am available for freelance work. Connect with me via:</p>
+     <div class="contact-links">
+         <a href="https://wa.me/123456789" class="whatsapp" target="_blank">
+             <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp" class="contact-icon">
+             WhatsApp
+         </a>
+         <a href="https://www.linkedin.com/in/yourprofile" class="linkedin" target="_blank">
+             <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="contact-icon">
+             LinkedIn
+         </a>
+         <a href="https://t.me/yourusername" class="telegram" target="_blank">
+             <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="contact-icon">
+             Telegram
+         </a>
+         <a href="https://www.instagram.com/yourprofile" class="instagram" target="_blank">
+             <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="Instagram" class="contact-icon">
+             Instagram
+         </a>
+              <a href="https://www.youtube.com/@CodigoRay" class="youtube" target="_blank">
+             <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="YouTube" class="contact-icon">
+             YouTube
+         </a>
+     </div>
+ </div>
+ 
+     <div class="btn-top" onclick="scrollToTop()">⬆</div>
+ <!-- Footer Section -->
+ <footer style="background-color: #111; padding: 40px 0; color: white; text-align: center;">
+     <p>&copy; Codiray 2025 All Rights Reserved</p>
+     <p style="font-size: 18px; font-style: italic; margin-top: 10px;">
+         "The only way to do great work is to love what you do." - Steve Jobs
+     </p>
+ </footer>
+ 
+     <script>
+         function scrollToTop() {
+             window.scrollTo({ top: 0, behavior: 'smooth' });
+         }
+ 
+         const canvas = document.getElementById('particles');
+         const ctx = canvas.getContext('2d');
+ 
+         canvas.width = window.innerWidth;
+         canvas.height = window.innerHeight;
+ 
+         const particles = Array.from({ length: 50 }, () => ({
+             x: Math.random() * canvas.width,
+             y: Math.random() * canvas.height,
+             radius: Math.random() * 3 + 1,
+             speed: Math.random() * 2 + 1
+         }));
+ 
+ 
+ 
+ 
+         function drawParticles() {
+             ctx.clearRect(0, 0, canvas.width, canvas.height);
+             ctx.fillStyle = '#FFD700';
+             particles.forEach(particle => {
+                 particle.y += particle.speed;
+                 if (particle.y > canvas.height) {
+                     particle.y = 0;
+                 }
+                 ctx.beginPath();
+                 ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                 ctx.fill();
+             });
+         }
+ 
+         setInterval(drawParticles, 30);
+     </script>
+ 
+ 
+ 
+ 
+ </body>
+ </html>
