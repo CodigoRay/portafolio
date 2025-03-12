@@ -102,18 +102,38 @@
             padding: 10px 20px;
             font-size: 16px;
             color: #fff;
-            background-color: #4C4C4C; /* Fondo suave gris */
+            background-color: transparent;
             text-decoration: none;
+            border: 2px solid #4C4C4C; /* Borde suave gris al principio */
             border-radius: 5px;
-            border: 2px solid #FFD700;
             transition: all 0.3s ease;
         }
 
+        /* Efecto hover con borde tridimensional */
         .contact-links a:hover {
-            background-color: #FFD700; /* Cambio a dorado al hacer hover */
-            color: #000; /* Cambiar texto a negro */
+            color: #fff;
             transform: scale(1.05);
-            box-shadow: 0 0 10px 3px #FFD700;
+            box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-links a.whatsapp:hover {
+            border-color: #25D366; /* Verde de WhatsApp */
+            box-shadow: 0 0 15px 5px #25D366;
+        }
+
+        .contact-links a.telegram:hover {
+            border-color: #0088cc; /* Azul de Telegram */
+            box-shadow: 0 0 15px 5px #0088cc;
+        }
+
+        .contact-links a.linkedin:hover {
+            border-color: #0A66C2; /* Azul de LinkedIn */
+            box-shadow: 0 0 15px 5px #0A66C2;
+        }
+
+        .contact-links a.instagram:hover {
+            border-color: #C13584; /* Morado de Instagram */
+            box-shadow: 0 0 15px 5px #C13584;
         }
     </style>
 </head>
@@ -158,10 +178,10 @@
         <h2>Let's Talk</h2>
         <p>I am available for freelance work. Connect with me via:</p>
         <div class="contact-links">
-            <a href="tu-enlace-whatsapp" target="_blank">WhatsApp: +51 998177826</a>
-            <a href="tu-enlace-telegram" target="_blank">Telegram: @immoraldeveloper</a>
-            <a href="tu-enlace-linkedin" target="_blank">LinkedIn: Cuenta LinkedIn</a>
-            <a href="tu-enlace-instagram" target="_blank">Instagram: Cuenta Instagram</a>
+            <a href="tu-enlace-whatsapp" target="_blank" class="whatsapp">WhatsApp: +51 998177826</a>
+            <a href="tu-enlace-telegram" target="_blank" class="telegram">Telegram: @immoraldeveloper</a>
+            <a href="tu-enlace-linkedin" target="_blank" class="linkedin">LinkedIn: Cuenta LinkedIn</a>
+            <a href="tu-enlace-instagram" target="_blank" class="instagram">Instagram: Cuenta Instagram</a>
         </div>
     </div>
 
