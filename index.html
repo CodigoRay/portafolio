@@ -360,18 +360,19 @@
         top: 0;
         left: 0;
         width: 100%;
-        background-color: transparent; /* Esto hace que el fondo sea transparente */
+        background-color: transparent; /* Fondo transparente */
         text-align: center;
         padding: 20px;
         z-index: 10;
+        overflow: hidden; /* Evitar el desbordamiento */
     }
 
     /* Estilo para el texto fijo */
     .fixed-text {
         font-size: 24px;
         font-weight: bold;
-        color: black; /* Asegura que el texto sea visible */
-        margin: 0; /* Elimina márgenes para evitar desplazamiento */
+        color: white; /* Cambié el color a blanco para que sea visible */
+        margin: 0;
     }
 
     /* Estilo para el contenedor del texto que cambia */
@@ -385,6 +386,7 @@
         opacity: 1;
         transition: opacity 1s ease-in-out;
         font-size: 24px;
+        color: white; /* Cambié el color a blanco */
     }
 
     .fade-in {
@@ -395,8 +397,6 @@
         opacity: 0;
     }
 </style>
-
-
 
     <div class="section content-box">
         <h2>Web Design</h2>
