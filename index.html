@@ -158,7 +158,105 @@
         </div>
         <p class="glow-text">Web developer with 3+ years of experience creating innovative digital solutions.</p>
     </div>
+<!-- Sección de Proyectos Destacados -->
+<div class="gold-container">
+    <h2>🚀 Proyectos Destacados</h2>
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="carousel-item">
+                <img src="proyecto1.jpg" alt="Proyecto 1">
+                <h3>Plataforma de Gestión de Actas</h3>
+                <p>Una herramienta completa para la creación, gestión y seguimiento de actas en organizaciones.</p>
+                <a href="#" class="btn">Ver más</a>
+            </div>
+            <div class="carousel-item">
+                <img src="proyecto2.jpg" alt="Proyecto 2">
+                <h3>Foro Interactivo</h3>
+                <p>Un espacio colaborativo para que los usuarios compartan conocimientos y resuelvan dudas técnicas.</p>
+                <a href="#" class="btn">Ver más</a>
+            </div>
+            <div class="carousel-item">
+                <img src="proyecto3.jpg" alt="Proyecto 3">
+                <h3>Canal de YouTube "Fit & Play"</h3>
+                <p>Contenido sobre ejercicio, videojuegos y música que motiva a llevar un estilo de vida activo y divertido.</p>
+                <a href="#" class="btn">Ver más</a>
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button class="prev">&#9664;</button>
+            <button class="next">&#9654;</button>
+        </div>
+    </div>
+</div>
 
+<style>
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    text-align: center;
+    background: #121212;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #c9a227;
+    color: #fff;
+}
+
+.carousel-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.carousel-controls .prev,
+.carousel-controls .next {
+    background: #c9a227;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #c9a227;
+}
+
+.carousel-controls .prev:hover,
+.carousel-controls .next:hover {
+    background: #fff;
+    color: #c9a227;
+}
+</style>
+
+<script>
+const carousel = document.querySelector(".carousel");
+const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".prev");
+let currentIndex = 0;
+
+nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % 3; // Cambia el número según la cantidad de proyectos
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+});
+
+prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + 3) % 3;
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+});
+</script>
     <div class="btn-top" onclick="scrollToTop()">⬆</div>
 
     <script>
