@@ -50,21 +50,21 @@
             border-radius: 50%;
             margin-top: 1rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #c9a227;
         }
 
         .profile-img img:hover {
             transform: scale(1.2);
-            box-shadow: 0 0 15px 5px #c9a227;
-            border: 2px solid #c9a227;
-            animation: electric-glow 0.5s infinite alternate;
+            box-shadow: 0 0 15px 5px #c9a227, 0 0 30px 15px #f5e042;
+            animation: electric-effect 0.3s infinite alternate;
         }
 
-        @keyframes electric-glow {
+        @keyframes electric-effect {
             from {
-                box-shadow: 0 0 20px 5px #c9a227, 0 0 40px 10px #c9a227;
+                box-shadow: 0 0 25px 10px #c9a227, 0 0 40px 20px #f5e042;
             }
             to {
-                box-shadow: 0 0 30px 10px #c9a227, 0 0 60px 15px #c9a227;
+                box-shadow: 0 0 35px 15px #c9a227, 0 0 50px 25px #f5e042;
             }
         }
 
