@@ -1,1 +1,133 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    height: 100vh;
+    position: relative;
+}
+
+.stars, .stars2, .stars3 {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    background: url('https://www.script-tutorials.com/demos/360/images/stars.png') repeat;
+    animation: moveStars 50s linear infinite;
+}
+
+.stars2 {
+    background-size: 200% 200%;
+    opacity: 0.5;
+    animation: moveStars 100s linear infinite;
+}
+
+.stars3 {
+    background-size: 300% 300%;
+    opacity: 0.3;
+    animation: moveStars 150s linear infinite;
+}
+
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100%); }
+}
+
+.fog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/foggy-birds.png');
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding-top: 50px;
+    text-align: center;
+}
+
+h1 {
+    color: #c9a227;
+    text-shadow: 0 0 20px #c9a227;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom: -40px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 0 15px #c9a227;
+}
+
+.profile-img img {
+    width: 100%;
+    height: auto;
+}
+
+.profile-img:hover {
+    transform: scale(1.1);
+}
+
+.glow-text {
+    color: #fff;
+    text-shadow: 0 0 10px #c9a227, 0 0 20px #c9a227;
+}
+
+.tech-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.tech-title {
+    color: #c9a227;
+    text-shadow: 0 0 15px #c9a227;
+}
+
+.tech-list {
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: moveTech 20s linear infinite;
+}
+
+.tech-item {
+    background: #121212;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: #c9a227;
+    min-width: 120px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.tech-item:hover {
+    transform: scale(1.1);
+    background: #c9a227;
+    color: #000;
+}
+
+@keyframes moveTech {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
+
+.gold-container {
+    background: rgba(201, 162, 39, 0.15);
+    border: 2px solid rgba(201, 16
