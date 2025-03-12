@@ -357,8 +357,8 @@
 <style>
     /* Estilo para el contenedor del texto fijo */
     .fixed-container {
-        position: fixed;
-        top: 0;
+        position: absolute;
+        top: 20px; /* Ajusta esto para que se quede en la parte superior de la página */
         left: 0;
         width: 100%;
         background-color: transparent; /* Fondo transparente */
@@ -366,7 +366,6 @@
         padding: 20px;
         z-index: 10;
         overflow: hidden; /* Evitar el desbordamiento */
-        pointer-events: none; /* Desactiva la interacción con el mouse */
     }
 
     /* Estilo para el texto fijo */
@@ -379,7 +378,7 @@
 
     /* Estilo para el contenedor del texto que cambia */
     .fade-container {
-        margin-top: 80px; /* Deja espacio debajo del texto fijo */
+        margin-top: 120px; /* Deja espacio debajo del texto fijo */
         text-align: center;
     }
 
@@ -399,6 +398,9 @@
         opacity: 0;
     }
 </style>
+
+
+    
 <!-- aca termina la parte fija -->
 
 
