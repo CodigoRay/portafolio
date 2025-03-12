@@ -56,6 +56,16 @@
             transform: scale(1.2);
             box-shadow: 0 0 15px 5px #c9a227;
             border: 2px solid #c9a227;
+            animation: electric-glow 0.5s infinite alternate;
+        }
+
+        @keyframes electric-glow {
+            from {
+                box-shadow: 0 0 20px 5px #c9a227, 0 0 40px 10px #c9a227;
+            }
+            to {
+                box-shadow: 0 0 30px 10px #c9a227, 0 0 60px 15px #c9a227;
+            }
         }
 
         .highlight {
