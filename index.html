@@ -283,85 +283,9 @@
  
  
  
- 
-  /* Estilo del contenedor del selector */
-         #google_translate_element {
-             display: inline-block;
-             position: relative;
-             font-family: Arial, sans-serif;
-             margin-top: 20px;
-         }
- 
-         /* Estilo para el botón "Cambiar Idioma" */
-         .google-translate-btn {
-             background-color: #007BFF;
-             color: white;
-             padding: 10px 20px;
-             border-radius: 5px;
-             font-size: 16px;
-             cursor: pointer;
-             text-align: center;
-             text-transform: uppercase;
-         }
- 
-         .google-translate-btn:hover {
-             background-color: #0056b3;
-         }
- 
-         /* Eliminar el logo de Google */
-         .goog-logo-link {
-             display: none !important;
-         }
- 
-         .goog-te-menu-value {
-             display: none !important;
-         }
- 
-         .goog-te-menu-value:hover {
-             cursor: pointer;
-         }
- 
-         /* Personalización del dropdown del idioma */
-         .goog-te-menu-frame {
-             border: none !important;
-             box-shadow: none !important;
-         }
- 
- 
- 
-         
- 
      </style>
  </head>
  <body>
- 
- <div id="google_translate_element"></div>
-     
-     <!-- Contenedor del widget con el texto "Cambiar idioma" -->
-     <div id="google_translate_element">
-         <target class="google-translate-btn" onclick="googleTranslateElementInit()">Cambiar idioma
-     </div>
- 
-     <!-- Google Translate Widget -->
-     <script type="text/javascript">
-         function googleTranslateElementInit() {
-             new google.translate.TranslateElement({
-                 pageLanguage: 'en', // idioma original de la página
-                 includedLanguages: 'es,fr,de,pt,it,ru', // idiomas disponibles para traducir
-                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-                 includedLanguages: 'en,fr,de,pt,it,ru', // idiomas disponibles para traducir
-                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                 autoDisplay: false
-             }, 'google_translate_element');
-         }
-     </script></target>
-     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
- 
- 
- 
- 
- 
- 
      <canvas id="particles"></canvas>
  
      <div class="container">
@@ -583,8 +507,19 @@
          setInterval(drawParticles, 30);
      </script>
  
+ <!-- Google Translate Widget -->
+ <script type="text/javascript">
+   function googleTranslateElementInit() {
+     new google.translate.TranslateElement({
+       pageLanguage: 'es',
+       includedLanguages: 'en,fr,de,pt,it,ru', // idiomas disponibles
+       layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+     }, 'google_translate_element');
+   }
+ </script>
+ <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+ <div id="google_translate_element"></div>
  
- 
- 
+     
  </body>
  </html>
