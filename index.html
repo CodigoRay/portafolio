@@ -297,11 +297,15 @@
     </div>
 
 <div class="section content-box">
-    <!-- Texto fijo arriba -->
-    <h2 class="fixed-text">I am fully dedicated to creating authentic digital solutions. I want to help make your dreams come true</h2>
+    <!-- Div para el texto fijo -->
+    <div class="fixed-container">
+        <h2 class="fixed-text">I am fully dedicated to creating authentic digital solutions. I want to help make your dreams come true</h2>
+    </div>
     
-    <!-- Texto que cambia -->
-    <h2 class="fade-text">Lo que no te mata, te hace más fuerte – Friedrich Nietzsche</h2>
+    <!-- Div para el texto que cambia -->
+    <div class="fade-container">
+        <h2 class="fade-text">Lo que no te mata, te hace más fuerte – Friedrich Nietzsche</h2>
+    </div>
 </div>
 
 <script>
@@ -350,26 +354,37 @@
 </script>
 
 <style>
-    /* Estilo para el texto fijo en la parte superior */
-    .fixed-text {
+    /* Estilo para el contenedor del texto fijo */
+    .fixed-container {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        background-color: white;
+        background-color: transparent; /* Esto hace que el fondo sea transparente */
         text-align: center;
         padding: 20px;
+        z-index: 10;
+    }
+
+    /* Estilo para el texto fijo */
+    .fixed-text {
         font-size: 24px;
         font-weight: bold;
-        z-index: 10;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: black; /* Asegura que el texto sea visible */
+        margin: 0; /* Elimina márgenes para evitar desplazamiento */
+    }
+
+    /* Estilo para el contenedor del texto que cambia */
+    .fade-container {
+        margin-top: 80px; /* Deja espacio debajo del texto fijo */
+        text-align: center;
     }
 
     /* Estilo para el texto que cambia */
     .fade-text {
         opacity: 1;
         transition: opacity 1s ease-in-out;
-        margin-top: 100px; /* Para que no quede debajo del texto fijo */
+        font-size: 24px;
     }
 
     .fade-in {
