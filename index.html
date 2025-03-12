@@ -208,222 +208,242 @@
             box-shadow: 0 0 15px 5px #007acc;
         }
 
- .contact-links {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap; /* Permite que los elementos se ajusten cuando sea necesario */
-        margin-top: 20px;
-    }
-
-    .contact-links a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 1.2rem;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 20px;
-        border-radius: 5px;
-        transition: all 0.3s ease;
-        position: relative;
-        flex-shrink: 0; /* Evita que los elementos se encojan demasiado */
-    }
-
-    .contact-links a:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.8);
-    }
-
-    .contact-links .whatsapp:hover {
-        border: 2px solid #25D366;
-        background-color: #25D366;
-    }
-
-    .contact-links .linkedin:hover {
-        border: 2px solid #0A66C2;
-        background-color: #0A66C2;
-    }
-
-    .contact-links .telegram:hover {
-        border: 2px solid #0088CC;
-        background-color: #0088CC;
-    }
-
-    .contact-links .instagram:hover {
-        border: 2px solid #E4405F;
-        background-color: #E4405F;
-    }
-.contact-links .youtube {
-    border: 2px solid transparent; /* Borde transparente en estado natural */
-    background-color: transparent; /* Fondo transparente */
-    color: #FF0000; /* Color de íconos de YouTube en estado natural */
-    transition: all 0.3s ease; /* Añadido para suavizar el cambio de estilo */
-}
-
-.contact-links .youtube:hover {
-    border: 2px solid #CC0000; /* Borde rojo al hacer hover */
-    background-color: #CC0000; /* Fondo rojo al hacer hover */
-    color: #fff; /* Color blanco de los íconos cuando se pasa el cursor */
-    box-shadow: 0 0 15px 5px #CC0000; /* Resplandor rojo similar a los otros íconos */
-}
-
-    .contact-icon {
-        width: 24px;
-        height: 24px;
-    }
-
-    /* Media Query para pantallas pequeñas */
-    @media (max-width: 768px) {
-        .contact-links a {
-            font-size: 1rem; /* Ajusta el tamaño de la fuente en pantallas más pequeñas */
-            padding: 8px 15px; /* Reduce el padding */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap; /* Permite que los elementos se ajusten cuando sea necesario */
+            margin-top: 20px;
         }
-    }
 
+        .contact-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+            flex-shrink: 0; /* Evita que los elementos se encojan demasiado */
+        }
 
-        
+        .contact-links a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.8);
+        }
+
+        .contact-links .whatsapp:hover {
+            border: 2px solid #25D366;
+            background-color: #25D366;
+        }
+
+        .contact-links .linkedin:hover {
+            border: 2px solid #0A66C2;
+            background-color: #0A66C2;
+        }
+
+        .contact-links .telegram:hover {
+            border: 2px solid #0088CC;
+            background-color: #0088CC;
+        }
+
+        .contact-links .instagram:hover {
+            border: 2px solid #E4405F;
+            background-color: #E4405F;
+        }
+
+        .contact-links .youtube {
+            border: 2px solid transparent; /* Borde transparente en estado natural */
+            background-color: transparent; /* Fondo transparente */
+            color: #FF0000; /* Color de íconos de YouTube en estado natural */
+            transition: all 0.3s ease; /* Añadido para suavizar el cambio de estilo */
+        }
+
+        .contact-links .youtube:hover {
+            border: 2px solid #CC0000; /* Borde rojo al hacer hover */
+            background-color: #CC0000; /* Fondo rojo al hacer hover */
+            color: #fff; /* Color blanco de los íconos cuando se pasa el cursor */
+            box-shadow: 0 0 15px 5px #CC0000; /* Resplandor rojo similar a los otros íconos */
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Media Query para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .contact-links a {
+                font-size: 1rem; /* Ajusta el tamaño de la fuente en pantallas más pequeñas */
+                padding: 8px 16px; /* Ajusta el padding en pantallas pequeñas */
+            }
+
+            .skills-list {
+                grid-template-columns: 1fr 1fr; /* Reduce las columnas a 2 para pantallas pequeñas */
+            }
+        }
     </style>
 </head>
 <body>
-    <canvas id="particles"></canvas>
-
+    <canvas></canvas>
     <div class="container">
-        <h1>Hey! 👋 I'm <span class="highlight">Codi Ray</span></h1>
-        <div class="profile-img">
-            <img src="image.png" alt="Codi Ray Logo">
-        </div>
-        <p class="glow-text">Web developer with 3+ years of experience creating innovative digital solutions.</p>
+        <section class="section">
+            <div class="content-box">
+                <h1>¡Bienvenidos a la Web de Codi Ray!</h1>
+                <p class="glow-text">Desarrollador Web Full Stack | Siempre aprendiendo y mejorando</p>
+                <div class="profile-img">
+                    <img src="https://via.placeholder.com/150" alt="Foto de perfil">
+                </div>
+            </div>
+            <div class="content-box">
+                <h2>Sobre mí</h2>
+                <p>Soy un desarrollador web apasionado por crear soluciones innovadoras. Siempre buscando optimizar y mejorar cada proyecto.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Mis Habilidades</h2>
+            <div class="skills-list">
+                <div class="skill php">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Php_logo.svg" alt="PHP">
+                    <p>PHP</p>
+                </div>
+                <div class="skill laravel">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Laravel.svg" alt="Laravel">
+                    <p>Laravel</p>
+                </div>
+                <div class="skill mysql">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/MySQL_logo.svg" alt="MySQL">
+                    <p>MySQL</p>
+                </div>
+                <div class="skill js">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript">
+                    <p>JavaScript</p>
+                </div>
+                <div class="skill html">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/HTML5_logo_and_wordmark.svg" alt="HTML">
+                    <p>HTML5</p>
+                </div>
+                <div class="skill css">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/CSS3_logo.svg" alt="CSS">
+                    <p>CSS3</p>
+                </div>
+                <div class="skill tailwind">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS">
+                    <p>Tailwind CSS</p>
+                </div>
+                <div class="skill vs-code">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Visual_Studio_Code_1.35_icon.svg" alt="VS Code">
+                    <p>VS Code</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Contáctame</h2>
+            <div class="contact-links">
+                <a href="https://wa.me/1234567890" class="whatsapp" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Whatsapp.svg" alt="WhatsApp" class="contact-icon">
+                    WhatsApp
+                </a>
+                <a href="https://www.linkedin.com/in/codi-ray/" class="linkedin" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo_2013.svg" alt="LinkedIn" class="contact-icon">
+                    LinkedIn
+                </a>
+                <a href="https://t.me/codiray" class="telegram" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Telegram.svg" alt="Telegram" class="contact-icon">
+                    Telegram
+                </a>
+                <a href="https://www.instagram.com/codi_ray" class="instagram" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram" class="contact-icon">
+                    Instagram
+                </a>
+                <a href="https://www.youtube.com/c/CodiRay" class="youtube" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/YouTube_icon.png" alt="YouTube" class="contact-icon">
+                    YouTube
+                </a>
+            </div>
+        </section>
     </div>
 
-    <div class="section content-box">
-        <h2>I am fully dedicated to creating authentic digital solutions.</h2>
-    </div>
-
-    <div class="section content-box">
-        <h2>Web Design</h2>
-        <p><b>Eswap - Online Store</b><br>Developing an online fashion store based on the Eswap UI design. I'm coding it from scratch using Laravel, turning the visual concept into a fully functional platform.</p>
-        <p>See demo ↗</p>
-
-        <h2>Web App</h2>
-        <p><b>Only Immorals</b><br>A web app with a business model similar to OnlyFans, designed in Figma and fully developed from scratch. It showcases a seamless user experience and a robust platform for content creators.</p>
-        <p>See Demo ↗</p>
-    </div>
-
-    <div class="section content-box">
-        <h2>My Skills</h2>
-        <div class="skills-list">
-            <div class="skill php">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP">
-                <p>PHP - Advanced</p>
-            </div>
-            <div class="skill laravel">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Laravel.png" alt="Laravel">
-                <p>Laravel - Advanced</p>
-            </div>
-            <div class="skill mysql">
-                <img src="https://upload.wikimedia.org/wikipedia/en/d/dd/MySQL_logo.svg" alt="MySQL">
-                <p>MySQL - Intermediate</p>
-            </div>
-            <div class="skill js">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript">
-                <p>JavaScript - Intermediate</p>
-            </div>
-            <div class="skill html">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png" alt="HTML">
-                <p>HTML - Advanced</p>
-            </div>
-            <div class="skill css">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS">
-                <p>CSS - Advanced</p>
-            </div>
-            <div class="skill tailwind">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS">
-                <p>Tailwind - Advanced</p>
-            </div>
-            <div class="skill vs-code">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Visual_Studio_Code_1.35_icon.png" alt="VS Code">
-                <p>VS Code - Advanced</p>
-            </div>
-
-            
-            
-        </div>
-
-    
-    </div>
-<div class="section content-box">
-    <h2>Let's Talk</h2>
-    <p>I am available for freelance work. Connect with me via:</p>
-    <div class="contact-links">
-        <a href="https://wa.me/123456789" class="whatsapp" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp" class="contact-icon">
-            WhatsApp
-        </a>
-        <a href="https://www.linkedin.com/in/yourprofile" class="linkedin" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="contact-icon">
-            LinkedIn
-        </a>
-        <a href="https://t.me/yourusername" class="telegram" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="contact-icon">
-            Telegram
-        </a>
-        <a href="https://www.instagram.com/yourprofile" class="instagram" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="Instagram" class="contact-icon">
-            Instagram
-        </a>
-             <a href="https://www.youtube.com/@CodigoRay" class="youtube" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="YouTube" class="contact-icon">
-            YouTube
-        </a>
-    </div>
-</div>
-    
-    <div class="btn-top" onclick="scrollToTop()">⬆</div>
-<!-- Footer Section -->
-<footer style="background-color: #111; padding: 40px 0; color: white; text-align: center;">
-    <p>&copy; Codiray 2025 All Rights Reserved</p>
-    <p style="font-size: 18px; font-style: italic; margin-top: 10px;">
-        "The only way to do great work is to love what you do." - Steve Jobs
-    </p>
-</footer>
+    <button class="btn-top" id="scrollTopBtn" onclick="scrollToTop()">
+        <i class="fa fa-arrow-up"></i>
+    </button>
 
     <script>
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        const canvas = document.getElementById('particles');
+        // Canvas animation script for background
+        const canvas = document.querySelector('canvas');
         const ctx = canvas.getContext('2d');
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const particles = Array.from({ length: 50 }, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            radius: Math.random() * 3 + 1,
-            speed: Math.random() * 2 + 1
-        }));
+        let particles = [];
 
-
-
-        
-        function drawParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#FFD700';
-            particles.forEach(particle => {
-                particle.y += particle.speed;
-                if (particle.y > canvas.height) {
-                    particle.y = 0;
-                }
-                ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-                ctx.fill();
-            });
+        function Particle(x, y) {
+            this.x = x;
+            this.y = y;
+            this.size = Math.random() * 5 + 1;
+            this.speedX = Math.random() * 3 - 1.5;
+            this.speedY = Math.random() * 3 - 1.5;
+            this.color = 'rgba(255, 215, 0, 0.8)';
         }
 
-        setInterval(drawParticles, 30);
+        Particle.prototype.update = function () {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            if (this.size > 0.2) this.size -= 0.1;
+
+            if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+            if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+        };
+
+        Particle.prototype.draw = function () {
+            ctx.fillStyle = this.color;
+            ctx.strokeStyle = this.color;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.fill();
+        };
+
+        function createParticles(e) {
+            let xPos = e.x;
+            let yPos = e.y;
+            for (let i = 0; i < 5; i++) {
+                particles.push(new Particle(xPos, yPos));
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                if (particles[i].size <= 0.2) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        canvas.addEventListener('mousemove', createParticles);
+        animateParticles();
+
+        // Scroll to top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
     </script>
 </body>
 </html>
